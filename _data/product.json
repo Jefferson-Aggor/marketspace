@@ -1,0 +1,60 @@
+[
+  {
+    "name": "Rash Kente",
+    "description": "3 and half yard of hand woven kente. I comes with a variety of good stuff. You'll love it",
+    "currency": "ghs",
+    "price": "300",
+    "main_photo": "no-photo.jpg",
+    "sub_photos": [
+      "sub_photo_1.jpg",
+      "sub_photo_2.jpg",
+      "sub_photo_3.jpg",
+      "sub_photo_4.jpg"
+    ],
+    "colors_available": ["red", "green", "yellow"],
+    "shop": "5d713a66ec8f2b88b8f830b8"
+  },
+  {
+    "name": "iPhone 11 pro",
+    "description": "iPhone 11 pro. ",
+    "currency": "ghs",
+    "price": "1100",
+    "main_photo": "no-photo.jpg",
+    "sub_photos": [
+      "sub_photo_1.jpg",
+      "sub_photo_2.jpg",
+      "sub_photo_3.jpg",
+      "sub_photo_4.jpg"
+    ],
+    "colors_available": ["gold", "wine"],
+    "shop": "5d725a1b7b292f5f8ceff788"
+  },
+  {
+    "name": "Crate of local eggs",
+    "description": "Healthy, large and delicious",
+    "currency": "ghs",
+    "price": "30",
+    "main_photo": "no-photo.jpg",
+    "sub_photos": [
+      "sub_photo_1.jpg",
+      "sub_photo_2.jpg",
+      "sub_photo_3.jpg",
+      "sub_photo_4.jpg"
+    ],
+    "shop": "5d725a037b292f5f8ceff787"
+  },
+  {
+    "name": "Microscope",
+    "description": "Exclusive e-microscope",
+    "currency": "ghs",
+    "price": "2000",
+    "main_photo": "no-photo.jpg",
+    "sub_photos": [
+      "sub_photo_1.jpg",
+      "sub_photo_2.jpg",
+      "sub_photo_3.jpg",
+      "sub_photo_4.jpg"
+    ],
+    "shop": "5d725a037b292f5f8ceff787"
+  }
+]

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../css/icon-font.css" />
+  <link rel="stylesheet" href="../css/ecommerce.css" />
+
+  <title>marketSpace | home</title>
+</head>
+
+<body>
+  <main class="index-main">
+    {{> _navbar}}
+    <section class="main-content">
+      <header class="main-content-header">
+        <!-- video -->
+        <div class="bg-video">
+          <video class="bg-video__content" autoplay muted loop>
+            <source src="../img/Working-Space.mp4" type="video/mp4" />
+            <!-- <source src="../img/video.webm" type="video/webm" /> -->
+            Your browser is not supported
+          </video>
+          <div class="bg-video__overlay"></div>
+        </div>
+        <!-- overlay -->
+        <div class="overlay overlay--dark"></div>
+        <!-- text -->
+        <div class="main-content-text u-center-text">
+          <h1 class="u-heading--large u-uppercase u-margin-bottom--small">
+            marketSpace
+          </h1>
+          <p>Lorem ipsum dolor sit.</p>
+
+          <a href="#" class="btn btn-primary btn--rounded btn--animated">Get Started</a>
+        </div>
+      </header>
+
+      <!-- about -->
+      <section id="section-about" class="section-about">
+
+        <div class="about-text">
+          {{> _alerts}}
+          <h1 class="u-heading--secondary u-margin-bottom--small">
+            Create, Sell, Be Happy.
+          </h1>
+          <p class="u-margin-bottom--medium">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat
+            magnam perspiciatis voluptate incidunt, odio repudiandae delectus
+            doloremque tempora, odit, voluptatibus vero nobis quia sunt
+            molestiae quaerat voluptatem exercitationem totam.
+          </p>
+          <a href="#" class="btn btn-transparent">Learn more &rarr;</a>
+        </div>
+        <!-- about images -->
+        <div>hello</div>
+      </section>
+
+      <!-- testimonials  -->
+      <section class="testimonials">
+        <!-- <div class="">
+            <h2 class="u-heading--secondary u-margin-bottom--large">
+              Testimonials
+            </h2>
+            <div class="testimonials-content">
+              <div>
+                <img
+                  src="../img/nat-8.jpg"
+                  alt=""
+                  class="testimonials--image"
+                />
+              </div>
+              <div class="testimonials--text">
+                <div class="u-space-between">
+                  <h2 class="u-heading--tertiary u-margin-bottom--small">
+                    Nice place to set up your market
+                  </h2>
+                  <span class="u-text-muted">20th Jan 1999</span>
+                </div>
+
+                <p>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  Vitae id officiis blanditiis obcaecati numquam sunt maxime
+                  cupiditate nam itaque? Sapiente?
+                </p>
+              </div>
+            </div>
+            <div class="testimonials-content">
+              <div>
+                <img
+                  src="../img/nat-9.jpg"
+                  class="testimonials--image"
+                  alt=""
+                />
+              </div>
+              <div class="testimonials--text">
+                <div class="u-space-between">
+                  <h2 class="u-heading--tertiary u-margin-bottom--small">
+                    Nice place to set up your market
+                  </h2>
+                  <span class="u-text-muted">20th Jan 1999</span>
+                </div>
+
+                <p>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  Vitae id officiis blanditiis obcaecati numquam sunt maxime
+                  cupiditate nam itaque? Sapiente?
+                </p>
+              </div>
+            </div>
+          </div> -->
+      </section>
+
+      <!-- contact us -->
+      <section id="contact-us" class="section-contact">
+        <div class="box box__contact">
+          <form class="form section-contact__form">
+            <div class="form-container">
+              <h3 class="u-heading--secondary u-margin-bottom--small">
+                Get in touch...
+              </h3>
+              <div class="form__group">
+                <input class="form__input" type="text" placeholder="Full name" id="name" name="name" required
+                  spellcheck="false" />
+                <label class="form__label" for="name">Full name</label>
+              </div>
+              <div class="form__group">
+                <input class="form__input" type="email" placeholder="Email" id="email" name="email" required />
+                <label class="form__label" for="email">Email</label>
+              </div>
+              <div class="form__group">
+                <textarea class="form__input" placeholder="Talk to us" id="text" name="text"></textarea>
+                <label class="form__label" for="text">Text</label>
+              </div>
+              <button type="submit" class="btn btn-primary btn--block">
+                Talk to us
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </section>
+  </main>
+</body>
+
+</html>

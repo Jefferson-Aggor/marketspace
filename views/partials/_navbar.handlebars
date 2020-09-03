@@ -1,0 +1,26 @@
+<nav class="main-nav">
+    <ul class="nav-menu">
+        <li class="nav-menu--item">
+            <a href="/">Home</a>
+        </li>
+
+        {{#if loggedIn}}
+
+        <li class="nav-menu--item">
+            <a href="/auth/logout">Logout</a>
+        </li>
+        {{else}}
+        <li class="nav-menu--item">
+            <a href="/auth">Authentication</a>
+        </li>
+
+        {{/if}}
+
+        <li class="nav-menu--item">
+            <a href="/shops">Shops</a>
+        </li>
+    </ul>
+    <footer class="nav-footer">
+        &copy; copyright marketspace 2020
+    </footer>
+</nav>

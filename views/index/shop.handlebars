@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/css/ecommerce.css" />
+    <link rel="stylesheet" href="/css/splide.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>{{shop.name}} | Home</title>
+</head>
+
+<body>
+    <main class="index-main">
+        {{> _navbar}}
+        <section class="main-content">
+            <div class="splide">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        <li class="splide__slide">
+                            <header class="store-header">
+                                <div class="slider slide_1">
+                                    <div class="slider_content">
+                                        <img src="{{shop.mainPhoto}}" alt="header_img"
+                                            class="slider_image slide_1__image" />
+                                        <div class="slider_overlay"></div>
+                                        <p class="slider_logo">{{shop.name}}</p>
+                                        <div class="slider_text">
+                                            <h3 class="u-heading--secondary">
+                                                {{shop.mainText_1}}
+                                            </h3>
+                                            <p>{{mainText_sub_1}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </header>
+                        </li>
+
+
+                        <li class="splide__slide">
+                            <header class="store-header">
+                                <div class="slider slide_1">
+                                    <div class="slider_content">
+                                        <img {{#if shop.photo_1}} src="{{shop.photo_1}}" {{else}}
+                                            src="/img/no-photo.png" {{/if}} alt="header_img"
+                                            class="slider_image slide_1__image" />
+                                        <div class="slider_overlay"></div>
+                                        <p class="slider_logo">{{shop.name}}</p>
+                                        <div class="slider_text">
+                                            <h3 class="u-heading--secondary">
+                                                Shop WITH US!!!
+                                            </h3>
+                                            <p>Lorem ipsum dolor sit amet consectetur.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </header>
+                        </li>
+                        <li class="splide__slide">
+                            <header class="store-header">
+                                <div class="slider slide_1">
+                                    <div class="slider_content">
+                                        <img src="/img/WP_20170830_001.jpg" alt="header_img"
+                                            class="slider_image slide_1__image" />
+                                        <div class="slider_overlay"></div>
+                                        <p class="slider_logo">Test Shop</p>
+                                        <div class="slider_text">
+                                            <h3 class="u-heading--secondary">
+                                                Home of affordable equipments.
+                                            </h3>
+                                            <p>Lorem ipsum dolor sit amet consectetur.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </header>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <section class="store-products">
+                <p class="lead">Products</p>
+                <div class="u-divider u-margin-bottom--medium"></div>
+                <div class="grid-3 grid-to-2">
+
+                    {{#each shop.products}}
+
+                    <div class="card shop">
+                        <img src="{{mainImage}}" class="shop__image" alt="shop-1" />
+
+                        <div class="shop__description store-description">
+                            <h2 class="">
+                                {{name}}
+                            </h2>
+                            <p>
+                                {{description}}
+                            </p>
+                            <p class="price">{{currency}} {{price}}</p>
+                            <a href="/product/{{_id}}" class="btn btn-block btn-primary shop__link">View
+                                more</a>
+                        </div>
+                    </div>
+
+
+                    {{/each}}
+
+                </div>
+            </section>
+
+            <section class="store-about">
+                <div class="card about-card">
+                    <div class="grid-2 grid-to-1">
+                        <div class="about-content">
+                            <h2 class="u-heading--large">About.</h2>
+                            <p>
+                                {{shop.about}}
+                            </p>
+                        </div>
+                        <img {{#if shop.aboutImage}} src="{{shop.aboutImage}}" {{else}} src="/img/no-photo.png" {{/if}}
+                            alt="about image" class="about-image" />
+                    </div>
+                </div>
+            </section>
+            {{> _footer}}
+        </section>
+    </main>
+
+    <script src="/js/splide.min.js"></script>
+    <script>
+        new Splide(".splide", {
+            type: "loop",
+            autoplay: true,
+        }).mount();
+    </script>
+</body>
+
+</html>

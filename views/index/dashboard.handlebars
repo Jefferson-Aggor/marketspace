@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>marketSpace | Dashboard</title>
+</head>
+
+<body>
+    <main class="index-main">
+        {{> _navbar}}
+        <section class="main-content">
+            <div class="u-space-between shops__nav">
+                <div class="shops__logo"> ({{loggedIn.name}})</div>
+                <ul class="u-flex h-menu">
+                    <li class="h-menu-item"><a href="/store/{{loggedIn.slug}}">View Site</a></li>
+                    <li class="h-menu-item"><a href="./sales.html">Sales</a></li>
+                    <li class="h-menu-item"><a href="/dashboard">Site & Products Manager</a></li>
+                </ul>
+            </div>
+
+            <section class=" grid-7-5 administration-grid ">
+
+                <div class="administration-content">
+                    <form action="/dashboard/customization?_method=PUT" method="POST" enctype="multipart/form-data">
+                        <div id="page-1" class=" page">
+                            <p class="lead">Customization</p>
+                            <div class="u-divider--primary"></div>
+                            <!-- <div  class="admin administration-colors">
+                    <p class="lead ">&ratail; Colors</p>
+                    <div class="details colors-details">
+                      <p class="u-margin-bottom--small">
+                        Colors are used to style the looks of your website. The right
+                        color combinations can give you one of the best looks you'd ever
+                        get
+                      </p>
+                      <p class="u-margin-bottom--small">
+                        There are 3 category of colors. 
+                        <ul class="h-menu u-margin-bottom--small">
+                          <li><p><strong>Primary Color: For links and texts </strong></p> </li>
+                          <li><p><strong>Secondary Color: For links and texts</strong></p> </li>
+                          <li><p><strong>Tertiary Color: For links and texts</strong></p> </li>
+                        </ul>
+                      </p>
+                      <p class="u-margin-bottom--small">&downharpoonleft; Choose colors</p>
+                      <div class="grid-3">
+                        <div class="color color-primary">
+                          <label for="primary-color" class="color-label">Primary color</label><input class="color-input" type="color" name="primary-color" id="primary-color" />
+                        </div>
+                        <div class="color color-secondary">
+                          <label for="secondary-color" class="color-label">Secondary color</label><input class="color-input" type="color" name="secondary-color" id="secondary-color" />
+                        </div>
+                        <div class="color color-tertiary">
+                          <label for="tertiary-color" class="color-label">Tertiary color</label><input class="color-input" type="color" name="tertiary-color" id="tertiary-color" />
+                        </div>
+                      </div>
+                    </div>
+                  </div> -->
+
+                            <div class="admin administration-images">
+                                <p class="lead ">&ratail; Images</p>
+                                <div class="details images-details">
+                                    <p class="u-margin-bottom--small">
+                                        Images make websites lively. Choose the right images for your website.
+                                    </p>
+                                    <p class="u-margin-bottom--small">
+                                        Atleast <strong>3</strong> images are needed to get the looks you want. <span
+                                            class="info">(Landscape images recommended)</span>
+                                    </p>
+                                    <p class="u-margin-bottom--small">&downharpoonleft; Select images</p>
+                                    <div class="">
+                                        <div class="images main-image form__group">
+                                            <input class="images-input form__input" type="file" name="image"
+                                                id="main-image" />
+                                            <label for="main-image" class="form__label">Main Image</label>
+                                        </div>
+
+                                        <div class="images primary-image form__group">
+                                            <input class="images-input form__input" type="file" name="image"
+                                                id="primary-image" />
+                                            <label for="primary-image" class="form__label">Primary Image</label>
+                                        </div>
+                                        <div class="images secondary-image form__group">
+                                            <input class="images-input form__input" type="file" name="image"
+                                                id="secondary-image" />
+                                            <label for="secodary-image" class=" form__label">Secondary Image</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="admin administration-texts">
+                                <p class="lead ">&ratail; Texts</p>
+                                <div class="details text-details">
+                                    <p class="u-margin-bottom--small">
+                                        Create awesome welcome texts for your customers.
+                                    </p>
+                                    <p class="u-margin-bottom--small">
+                                    <p class="info">Few Texts (4 words) recommended</p>
+                                    </p>
+                                    <p class="u-margin-bottom--small">&downharpoonleft; Create Texts</p>
+                                    <div class="">
+                                        <div class="text main-text form__group">
+                                            <div class="main-text u-margin-bottom--medium">
+                                                <p class="">Text 1</p>
+                                                <div class="u-divider--primary u-margin-bottom--small"></div>
+                                                <input class="texts-input form__input" type="text" name="mainText_1"
+                                                    value="{{loggedIn.mainText_1}}" id="main-text-1"
+                                                    placeholder="Main Text" />
+                                                <label for="main-text-1" class="form__label">Main Text</label>
+
+                                                <input class="texts-input form__input" type="text" name="mainText_sub_1"
+                                                    value="{{loggedIn.mainText_sub_1}}" id="sub-main-text-1"
+                                                    placeholder="Sub main text" />
+                                                <label for="sub-main-text" class="form__label">Sub main text</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="text main-text form__group">
+                                            <div class="main-text u-margin-bottom--medium">
+                                                <p class="">Text 2</p>
+                                                <div class="u-divider--primary u-margin-bottom--small"></div>
+                                                <input class="texts-input form__input" type="text" name="mainText_2"
+                                                    id="main-text-2" placeholder="Main Text" />
+                                                <label for="main-text-2" class="form__label">Main Text</label>
+
+                                                <input class="texts-input form__input" type="text" name="mainText_sub_2"
+                                                    id="sub-main-text-2" placeholder="Sub main text" />
+                                                <label for="mainText_sub_2" class="form__label">Sub main text</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="text main-text form__group">
+                                            <div class="main-text u-margin-bottom--medium">
+                                                <p class="">Text 3</p>
+                                                <div class="u-divider--primary u-margin-bottom--small"></div>
+                                                <input class="texts-input form__input" type="text" name="mainText_3"
+                                                    id="main-text-3" placeholder="Main Text" />
+                                                <label for="main-text-3" class="form__label">Main Text</label>
+
+                                                <input class="texts-input form__input" type="text" name="mainText_sub_3"
+                                                    id="sub-main-text-3" placeholder="Sub main text" />
+                                                <label for="sub-main-text-3" class="form__label">Sub main text</label>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn--block btn-primary">Customize</button>
+                            <div class="u-space-between paginate">
+                                <a href="#" class="left-arrow-1">&larr;</a>
+                                <p>1 of 3</p>
+                                <a href="#page-2" class="right-arrow-1">&rarr;</a>
+                            </div>
+
+
+
+                        </div>
+                    </form>
+
+
+                    <form action="/dashboard/details/?_method=PUT" method="Post" enctype="multipart/form-data">
+                        <div id="page-2">
+                            <p class="lead">Shop Details</p>
+                            <div class="u-divider--primary u-margin-bottom--medium"></div>
+                            <div class="text main-text form__group">
+                                <div class="main-text u-margin-bottom--medium">
+                                    <p class="lead ">&ratail; About Shop</p>
+                                    <textarea class="texts-input form__input" name="about_shop" id="about-shop"
+                                        cols="30" rows="5" placeholder="Tell us about your shop" maxlength="120"
+                                        spellcheck="true">{{loggedIn.about}}</textarea>
+                                    <label for="about-shop" class="form__label" id="about-shop-label"></label>
+                                </div>
+                            </div>
+
+                            <div class="images about-image form__group ">
+                                <input class="images-input form__input" type="file" name="image" id="about-image" />
+                                <label for="about-image" class="form__label u-margin-bottom--large">About Image</label>
+                            </div>
+
+                            <div class="show-reviews u-margin-bottom--medium">
+                                <p class="u-margin-bottom--small">&ratail; Reviews.</p>
+                                <input type="checkbox" class="checkbox" name="" id="show-reviews">
+                                <label for="show-reviews"> Show reviews </label>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn--block">Add Site Details</button>
+                            <div class="u-space-between paginate">
+                                <a href="#page-1" class="left-arrow-2">&larr;</a>
+                                <p>2 of 3</p>
+                                <a href="#page-3" class="right-arrow-2">&rarr;</a>
+                            </div>
+                        </div>
+                    </form>
+
+
+                    <form action="/dashboard/product" method="Post" enctype="multipart/form-data">
+                        <div id="page-3">
+                            <p class="lead">Add Product.
+                            <p>
+                            <div class="u-divider--primary u-margin-bottom--medium"></div>
+
+                            <div class="text main-text form__group">
+                                <div class="main-text u-margin-bottom--medium">
+                                    <p class="lead ">&ratail; Product details</p>
+
+                                    <input class="form__input" type="text" name="product_name" id="product-name"
+                                        placeholder="Product Name" maxlength="30" required />
+                                    <label for="product-name" class="form__label">Product Name</label>
+
+                                    <textarea class="texts-input form__input" name="product_description"
+                                        id="product-description" cols="30" rows="5" placeholder="Description"
+                                        maxlength="120" spellcheck="false"></textarea>
+                                    <label for="product-description" class="form__label"
+                                        id="product-description-label"></label>
+
+
+                                    <div class="grid-2">
+                                        <div class="form__group">
+                                            <select class="form__input" id="product-currency" name="currency" />
+                                            <option value="" selected disabled>Currency</option>
+                                            <option value="ghs">Ghana Cedis</option>
+                                            <option value="$">US Dollars</option>
+                                            </select>
+
+                                        </div>
+                                        <div class="form__group">
+                                            <input class="form__input" type="number" min="0" placeholder="Price"
+                                                id="product-price" name="product_price" required />
+                                            <label class="form__label" for="product-price">Price</label>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="form__group">
+                                        <input class="form__input" type="number" placeholder="Products Available"
+                                            id="product-available" name="products_available" min="0" />
+                                        <label class="form__label" for="product-available"> Products Available</label>
+                                    </div>
+
+                                </div>
+
+                                <div class="u-margin-bottom--medium">
+                                    <p class="lead ">&ratail; Product Images</p>
+                                    <div class="images about-image form__group ">
+                                        <input class="images-input form__input" type="file" name="image"
+                                            id="main-product-image" required />
+                                        <label for="main-product-image" class="form__label u-margin-bottom--large"><span
+                                                class="u-alert">*</span>Main Product Image</label>
+                                    </div>
+
+                                    <div class="images about-image form__group ">
+                                        <input class="images-input form__input" type="file" name="image"
+                                            id="sub-product-photos" multiple />
+                                        <label for="sub-product-photos"
+                                            class="form__label u-margin-bottom--large">Additional photos </label>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <p class="lead ">&ratail; Optionals</p>
+
+                            <div class="form__group">
+                                <select class="form__input" id="sizes-available" name="sizes_available">
+                                    <option value="">Available Sizes</option>
+                                    <option value="small">small</option>
+                                    <option value="medium">medium</option>
+                                    <option value="large">large</option>
+                                    <option value="extra large">extra large</option>
+                                </select>
+                            </div>
+
+                            <div class="form__group">
+                                Tags make search for your product very easy.
+                                <input class="form__input" type="text" name="tags" id="tags"
+                                    placeholder="Tags (eg: camera,iphone11,dress)" required />
+                                <label for="tags" class="form__label">Tags (eg: camera,iphone11,dress)</label>
+                            </div>
+
+
+                            <button type="submit" class="btn btn--block btn-primary">Add Product</button>
+
+                            <div class="u-space-between paginate">
+                                <a href="#page-2" class="left-arrow-3">&larr;</a>
+                                <p>3 of 3</p>
+                                <a href="#" class="right-arrow-3">&rarr;</a>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+
+                <div id="preview" class="administration-preview">
+                    <header class="preview-header" id="preview-header">
+                        <p class="preview-logo" id="preview-logo">{{loggedIn.name}}</p>
+                        <img {{#if loggedIn.mainPhoto}} src="{{loggedIn.mainPhoto}}" {{else}} src="/img/no-photo.png"
+                            {{/if}} alt="image-1" id="preview-image" class="preview-image preview-image--1"
+                            draggable="false">
+                        <div class="preview-overlay"></div>
+                        <div class="preview-header-texts">
+                            <p class="preview-mainText" id="main-text-placeholder-1"></p>
+                            <p class="preview-subText" id="sub-text-placeholder-1"></p>
+                        </div>
+
+                    </header>
+                    <div class="preview-about" id="preview-about">
+                        <div class="card ">
+                            <div class="grid-2">
+                                <div class="preview-about-text">
+                                    <h2 class="preview-heading">About Us.</h2>
+                                    <p id="preview-about-placeholder"></p>
+                                    <a href="" class="preview-btn">Read More</a>
+                                </div>
+                                <div class="preview-image">
+                                    <img src="../img/hero.jpeg" alt="" id="about-preview-image" draggable="false">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="preview-ratings" id="preview-ratings">
+                        <div class="card ratings-card">
+                            <div class="ratings-image">
+                                <img src="../img/hero.jpeg" alt="" class="ratings-img" draggable="false">
+                            </div>
+                            <div class="ratings-text">
+                                <div class="u-space-between">
+                                    <p class="ratings-info">Jeff</p>
+                                    <p class="ratings-info">5.0</p>
+                                </div>
+                                <p class="ratings-text-content">Lorem ipsum dolor sit, amet consectetur adipisicing
+                                    elit!</p>
+                                <p class="ratings-info ratings-date">20/12/09</p>
+                            </div>
+                        </div>
+                        <div class="card ratings-card">
+                            <div class="ratings-image">
+                                <img src="../img/nat-9.jpg" alt="" class="ratings-img">
+                            </div>
+                            <div class="ratings-text">
+                                <div class="u-space-between">
+                                    <p class="ratings-info">Mercy Johnson</p>
+                                    <p class="ratings-info">4.8</p>
+                                </div>
+                                <p class="ratings-text-content">Lorem ipsum dolor sit, amet consectetur adipisicing
+                                    elit. Corrupti nihil saepe aspernatur maiores necessitatibus sint!</p>
+                                <p class="ratings-info ratings-date">20/12/09</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="preview-product" id="preview-product">
+                        <div class="">
+
+                            <div class="preview-product-card card">
+                                <div class="">
+                                    <img src="../img/nat-8.jpg" alt="" class="preview-product-image" draggable="false">
+                                </div>
+                                <h3 id="preview-product-name" class="preview-product-name"></h3>
+                                <div>
+                                    <p class="preview-product-description" id="preview-product-description"></p>
+                                </div>
+                                <div class="u-space-between preview-product-price ">
+                                    <a href="" class="preview-product-btn">View More</a>
+                                    <div class=""><span id="preview-product-currency"></span><span
+                                            id='preview-product-price'></span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </section>
+        </section>
+    </main>
+
+    <script src="/js/dashboard.js"></script>
+</body>
+
+</html>

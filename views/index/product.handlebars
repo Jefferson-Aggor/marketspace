@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/icon-font.css" />
+    <link rel="stylesheet" href="../css/ecommerce.css" />
+    <link rel="stylesheet" href="../css/splide.min.css" />
+    <link rel="stylesheet" href="../css/lightbox.min.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>{{product.owner.name}} | {{product.name}} </title>
+</head>
+
+<body>
+    <main class="index-main">
+        {{> _navbar}}
+        <section class="main-content">
+            <div class="u-space-between shops__nav">
+                <div class="shops__logo">{{product.owner.name}}</div>
+            </div>
+            <section class="product-section">
+                <div class="grid-3 product-grid-3">
+                    <div>
+                        <div class="product-thumbails u-margin-bottom--large">
+                            <div class="product-mainImage">
+                                <a href="{{product.mainImage}}" data-lightbox="home-images">
+                                    <img src="{{product.mainImage}}" alt="" class="product-main-image" /></a>
+                            </div>
+                            <div class="product-subImages">
+                                <div class="grid-4">
+                                    {{#if product.photo_1}}
+                                    <div class="sub-image-container">
+                                        <a href="{{product.photo_1}}" data-lightbox="home-images">
+                                            <img src="{{product.photo_1}}" alt="" class="product-sub-image" /></a>
+                                    </div>
+                                    {{/if}}
+                                    {{#if product.photo_2}}
+                                    <div class="sub-image-container">
+                                        <a href="{{product.photo_2}}" data-lightbox="home-images">
+                                            <img src="{{product.photo_2}}" alt="" class="product-sub-image" /></a>
+                                    </div>
+                                    {{/if}}
+                                    {{#if product.photo_3}}
+                                    <div class="sub-image-container">
+                                        <a href="{{product.photo_3}}" data-lightbox="home-images">
+                                            <img src="{{product.photo_3}}" alt="" class="product-sub-image" /></a>
+                                    </div>
+                                    {{/if}}
+                                    {{#if product.photo_4}}
+                                    <div class="sub-image-container">
+                                        <a href="{{product.photo_4}}" data-lightbox="home-images">
+                                            <img src="{{product.photo_4}}" alt="" class="product-sub-image" /></a>
+                                    </div>
+                                    {{/if}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-description">
+                        <p class="tag">Name</p>
+                        <p class="title">
+                            {{product.name}}
+                        </p>
+
+                        <div class="u-divider--primary u-margin-bottom--small"></div>
+                        <div class="product-description u-margin-bottom--medium">
+                            <div class="tag">Description</div>
+                            <p>
+                                {{product.description}}
+                            </p>
+                        </div>
+                        <div class="price">
+                            <p class="tag">price</p>
+                            <span class="product-price">{{product.currency}} {{product.price}}</span>
+                        </div>
+
+                        {{#if product.colors}}
+                        <div class="colors u-margin-bottom--medium">
+                            <p class="u-margin-bottom--small">*available colors</p>
+                            <div class="grid-4">
+                                <div class="product-color" style="background-color: red;">
+                                    &nbsp;
+                                </div>
+                                <div class="product-color" style="background-color: yellow;">
+                                    &nbsp;
+                                </div>
+                                <div class="product-color" style="background-color: green;">
+                                    &nbsp;
+                                </div>
+                                <div class="product-color" style="background-color: pink;">
+                                    &nbsp;
+                                </div>
+                            </div>
+                        </div>
+                        {{/if}}
+                        <p>
+                            <strong class="tag">quantity</strong>
+                            <span class="qtyavailable"><span class="num">{{product.quantity}}</span></span>
+                        </p>
+
+                        <div class="tags">
+                            <a href="#">#{{product.tags}}</a>
+                        </div>
+                    </div>
+
+                    <div class="product-payment">
+                        <p class="lead"><i class="icon-ecommerce-money"></i> Payment</p>
+                        <div class="u-divider u-margin-bottom--medium"></div>
+                        <p class="u-margin-bottom--large payment_text">
+                            For safety reasons, <strong>CASH ON DELIVERY</strong> is the
+                            only payment option available.
+                        </p>
+                        <form action="/payment/{{product._id}}" method="POST">
+                            <input type="text" name="product" value="{{product._id}}" hidden>
+                            <input type="text" name="product_name" value="{{product.name}}" hidden>
+                            <input type="text" name="shop_name" value="{{product.owner.name}}" hidden>
+                            <div class="form__group">
+                                <input class="form__input" type="text" placeholder="Full name" id="name" name="name"
+                                    required />
+                                <label class="form__label" for="name">Full name</label>
+                            </div>
+                            <div class="grid-2 form-grid-2">
+                                <div class="form__group">
+                                    <input class="form__input" type="email" placeholder="Email" id="email" name="email"
+                                        required />
+                                    <label class="form__label" for="email">Email</label>
+                                </div>
+                                <div class="form__group">
+                                    <input class="form__input" type="tel" placeholder="Contact" id="phone" name="phone"
+                                        required />
+                                    <label class="form__label" for="phone">Phone</label>
+                                </div>
+                            </div>
+
+                            <div class="form__group">
+                                <input class="form__input" type="text" placeholder="Location" id="location"
+                                    name="location" required />
+                                <label class="form__label" for="location">Location</label>
+                            </div>
+
+                            <div class="form__group">
+                                <select class="form__input" id="category" name="quantity" required>
+                                    <option value="" selected disabled>Quantity</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                    <option value="4">Four</option>
+                                    <option value="5">Five</option>
+
+                                </select>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn--block u-margin-bottom--small">
+                                <i class="icon-ecommerce-bag"></i> Place Order
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <script src="../js/splide.min.js"></script>
+    <script src="../js/lightbox-plus-jquery.js"></script>
+    <script>
+        const quantity = document.querySelector(".qtyavailable");
+        const num = document.querySelector(".num");
+        const toNum = Number(num.innerHTML);
+        if (toNum < 5) {
+            quantity.style.color = "#d62246";
+        } else {
+            quantity.style.color = "green";
+        }
+
+        if (toNum == 0) {
+            num.innerText = `*out of stock`;
+        } else if (toNum == 1) {
+            num.innerText = `${toNum} pc`;
+        } else {
+            num.innerText = `${toNum} pcs`;
+        }
+    </script>
+</body>
+
+</html>

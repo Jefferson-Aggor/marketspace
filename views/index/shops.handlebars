@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="../css/ecommerce.css" />
+
+    <title>marketSpace | All Shops</title>
+</head>
+
+<body>
+    <main class="index-main">
+        {{> _navbar}}
+        <section class="main-content">
+            <div class="u-space-between shops__nav">
+                <div class="shops__logo">Shops</div>
+                <form action="" class="shops__form">
+                    <input type="search" name="" id="" placeholder="Search Shops" />
+                </form>
+                <div class="shops__number">
+                    1
+                </div>
+            </div>
+            <div class="shops-content">
+                <div class="shops-content__text u-margin-bottom--medium">
+                    <h2 class="u-heading--large u-margin-bottom--medium">
+                        <i class="icon-ecommerce-bag"></i>View All Stores
+                    </h2>
+
+                    <p>
+                        You can view over 100+ shops by the just the click of a button.
+                    </p>
+                </div>
+
+
+                <div class="shops__category u-margin-bottom--medium">
+
+                    <div class="grid-3 grid-to-2">
+
+                        {{#each shops}}
+                        {{#if about}}
+                        <div class="card shop__card shop">
+                            <img src="{{mainPhoto}}" class="shop__image" alt="shop-1" />
+
+                            <h2 class="shop__name">
+                                {{name}}
+                            </h2>
+                            <div class="shop__description">
+                                <div class="category" style="color: orangered;"> <i class="icon-ecommerce-bag"></i>
+                                    {{category}}</div>
+
+                                <p>
+                                    {{about}}
+                                </p>
+
+                                <a href="/store/{{slug}}" class="btn btn-block btn-primary shop__link">Visit Store</a>
+                            </div>
+                        </div>
+                        {{/if}}
+                        {{/each}}
+                    </div>
+                </div>
+
+
+
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
