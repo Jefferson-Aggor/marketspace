@@ -170,7 +170,7 @@ const imageHandler = function (handle, placeholder) {
     const splitType = file.type.split("/");
 
     if (file !== undefined) {
-      let maxLen = 2000000;
+      let maxLen = 4000000;
 
       if (splitType[0] !== "image") {
         placeholder.src = originalSrc;
@@ -237,19 +237,19 @@ const renderTexts = function (handle, placeholder, message) {
   });
 };
 
-imageHandler(mainImage, previewImage);
-imageHandler(about_image, preview_about_image);
-imageHandler(primaryImage, previewImage);
-imageHandler(secondaryImage, previewImage);
-imageHandler(product_mainImage, preview_product_image);
-imageHandler(product_subImages, "");
-
 renderTexts(mainText_1, mainText_1_placeholder, "Insert main text");
 renderTexts(sub_mainText_1, sub_text_placeholder_1, "insert sub image");
 renderTexts(about_shop, preview_about_placeholder, "Tell us about your shop");
 renderTexts(product_name, preview_product_name, "Name of product");
 renderTexts(product_description, preview_product_description, "Description");
 renderTexts(product_price, preview_product_price, "");
+
+imageHandler(mainImage, previewImage);
+imageHandler(about_image, preview_about_image);
+imageHandler(primaryImage, previewImage);
+imageHandler(secondaryImage, previewImage);
+imageHandler(product_mainImage, preview_product_image);
+imageHandler(product_subImages, "");
 
 check(show_reviews, reviews);
 

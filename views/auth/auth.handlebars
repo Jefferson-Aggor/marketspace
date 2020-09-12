@@ -42,15 +42,18 @@
                         </div>
 
                         <div class="form__group">
-                            <select class="form__select" id="category" name="category" required>
-                                <option value="" selected disabled>Category</option>
+
+                            <select class="form__select" id="category" name="category">
+                                <option value="" selected disabled>
+                                    Category
+                                </option>
+                                <option value="accessories">Accessories</option>
                                 <option value="appliances">Appliances</option>
-                                <option value="appliances">Appliances</option>
-                                <option value="appliances">Appliances</option>
-                                <option value="appliances">Appliances</option>
-                                <option value="appliances">Appliances</option>
-                                <option value="appliances">Appliances</option>
-                                <option value="appliances">Appliances</option>
+                                <option value="clothing">Clothing</option>
+                                <option value="education">Education</option>
+                                <option value="fashion">Fashion</option>
+                                <option value="food">Food</option>
+                                <option value="other">Other</option>
                             </select>
                         </div>
 
@@ -101,10 +104,12 @@
                         <button type="submit" class="btn btn-primary btn--block u-margin-bottom--small">
                             <i class="icon-ecommerce-bag"></i> Login
                         </button>
-                        <p class="u-center-text">
-                            Don't have an account?
-                            <a href="#register" id="show__register">Register</a>
-                        </p>
+                        <div class="u-center-text">
+                            <a href="/auth/" id="show__register"> Don't have an account?</a>
+                            <span style="font-size: 1.5rem;">Or</span> <a href="/auth/forgotPassword">Forgot
+                                password</a>
+                        </div>
+
                     </form>
                 </div>
             </div>

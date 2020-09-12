@@ -27,6 +27,9 @@ const paymentSchema = new Schema({
     type: Number,
     default: 1,
   },
+  product_name: {
+    type: String,
+  },
   product: {
     type: Schema.Types.ObjectId,
     ref: "Product",

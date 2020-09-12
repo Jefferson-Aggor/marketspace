@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/css/ecommerce.css" />
+    <link rel="stylesheet" href="/css/lightbox.min.css">
+    <title>{{loggedIn.slug}} | Sales</title>
+</head>
+
+<body>
+    <main class="index-main">
+        {{> _navbar}}
+        <section class="main-content">
+            {{> _alerts}}
+            <div class="u-space-between shops__nav">
+                <div class="shops__logo">{{shop.name}}</div>
+                <form action="" class="shops__form">
+                    <input type="search" name="" id="" placeholder="Search Shops" />
+                </form>
+                <div class="shops__number">1</div>
+            </div>
+            <div class="sale-content">
+                <div class="u-margin-bottom--large">
+                    <h3 class="u-heading--large">Manage your shop.</h3>
+                    <div class="u-divider"></div>
+                </div>
+                <div class="u-margin-bottom--large">
+                    <h2 class="u-heading--tertiary">
+                        <i class="icon-ecommerce-bag"></i>YOUR SALES.
+                    </h2>
+
+                    <table>
+                        <thead>
+                            <th>Name</th>
+                            <th>Product</th>
+                            <th>Location</th>
+                            <th>Phone</th>
+                            <th>Date</th>
+                        </thead>
+                        {{#each product}}
+
+                        {{#each orders}}
+                        <tbody>
+                            <td> <strong>{{name}}</strong> </td>
+                            <td>{{product_name}}</td>
+
+                            <td>{{location}}</td>
+                            <td><a href="tel:{{phone}}">{{phone}}</a></td>
+                            <td>{{formatDate date}}</td>
+                        </tbody>
+                        {{/each}}
+
+                        {{/each}}
+                    </table>
+                </div>
+
+                <div class="u-margin-bottom--large">
+                    <h2 class="u-heading--tertiary">
+                        <i class="icon-ecommerce-bag"></i>YOUR LISTED PRODUCTS.
+                    </h2>
+                    {{#if product}}
+                    <table>
+                        <thead>
+                            <th>Name</th>
+                            <th>Main Image</th>
+                            <th>Price</th>
+                            <th>Date</th>
+                            <th>Changes</th>
+                        </thead>
+
+                        {{#each product}}
+
+                        <tbody>
+
+                            <td><strong>{{name}}</strong></td>
+                            <td>
+                                <a href="{{mainPhoto}}" data-lightbox="{{_id}}">View Image</a>
+                            </td>
+                            <td>{{currency}} <strong>{{formatNum price}}</strong> </td>
+                            <td>{{formatDate addedAt}}</td>
+                            <td>
+                                <a href="/dashboard/edit/{{_id}}/">E</a> |
+                                <a href="/dashboard/delete/{{_id}}?_method=DELETE">D</a>
+                            </td>
+
+                        </tbody>
+                        {{/each}}
+
+                    </table>
+                    {{else}}
+                    <p class="u-alert" style="margin-top: 2rem;">No Products Added Yet <a href="/dashboard">Add
+                            Product</a></p>
+                    {{/if}}
+
+
+                </div>
+
+                <div class="sale-danger">
+                    <h2 class="u-heading--secondary u-margin-bottom--medium" style="color: #f06467">
+                        Close your shop ?
+                    </h2>
+
+                    <a href="" class="btn btn-danger" id="showModal">DELETE
+                        SHOP</a>
+
+                    <div class="popup" id="popup">
+                        <div class="popup-content" id="popup-content">
+                            <h2 class=" u-margin-bottom--medium">Sure about this?</h2>
+                            <div>
+
+                                <p class="alert-warning u-margin-bottom--medium" style="padding:2rem 1rem">
+                                    You are about to delete your shop.
+                                    This action is irreversible</p>
+                            </div>
+
+                            <a href="/dashboard/{{loggedIn._id}}/delete?_method=DELETE" class='u-alert'>DELETE
+                                SHOP</a>
+                        </div>
+                    </div>
+
+                    {{!-- {{#each product}}
+                    <div class="popup" id="deletePopup">
+                        <div class="popup-content" id="popup-content">
+                            <h2 class=" u-margin-bottom--medium">Sure about this?</h2>
+                            <div>
+
+                                <p class="alert-warning u-margin-bottom--medium" style="padding:2rem 1rem">
+                                    You are about to delete <strong>{{name}}</strong>.
+                                    This action is irreversible</p>
+                            </div>
+
+                            <a href="/dashboard/delete/{{_id}}?_method=DELETE" class='u-alert'>Delete
+                                Product</a>
+                        </div>
+                    </div>
+                    {{/each}} --}}
+
+
+
+                </div>
+            </div>
+            <div style="height: 25vh"></div>
+            {{> _footer}}
+        </section>
+    </main>
+
+    <script src="/js/lightbox-plus-jquery.js"></script>
+    <script>
+        const showModal = document.getElementById("showModal");
+        const popup_content = document.querySelectorAll(".popup-content");
+        const popup = document.querySelector("#popup");
+        const deletePopup = document.querySelector("#deletePopup");
+
+        const show = function (handler, ID, placeholder) {
+            handler.addEventListener("click", (e) => {
+                e.preventDefault();
+                ID.style.opacity = 1;
+                ID.style.visibility = "visible";
+
+                placeholder.style.transform = "translate(-50%,-50%) scale(1)";
+                placeholder.style.opacity = 1;
+            });
+        };
+
+        const hide = function (handler, ID, placeholder) {
+            handler.addEventListener("click", (e) => {
+                if (e.target.className == "popup") {
+                    ID.style.opacity = 0;
+                    ID.style.visibility = "hidden";
+
+                    placeholder.style.transform = "translate(-50%,-50%) scale(0.5)";
+                    placeholder.style.opacity = 0;
+                }
+            });
+        };
+
+        popup_content.forEach((content) => {
+
+            content.style.transform = "translate(-50%,-50%) scale(0.5)";
+            content.style.opacity = 0;
+
+            show(showModal, popup, content);
+
+            hide(popup, popup, content);
+
+
+
+        });
+
+
+    </script>
+</body>
+
+</html>

@@ -14,14 +14,29 @@
     <main class="index-main">
         {{> _navbar}}
         <section class="main-content">
-            <div class="u-space-between shops__nav">
-                <div class="shops__logo">Shops</div>
-                <form action="" class="shops__form">
-                    <input type="search" name="" id="" placeholder="Search Shops" />
+            <div class="u-flex shops__nav">
+                <div class="shops__logo">All Shops</div>
+                <form action="/shops" method="GET" class="shops__form">
+                    <div class="form__group shop-select-form">
+                        <select class="form__select" id="category" name="search">
+                            <option value="" selected disabled>
+                                Filter shops by category
+                            </option>
+                            <option value="accessories">Accessories</option>
+                            <option value="appliances">Appliances</option>
+                            <option value="clothing">Clothing</option>
+                            <option value="education">Education</option>
+                            <option value="fashion">Fashion</option>
+                            <option value="food">Food</option>
+                            <option value="other">Other</option>
+                        </select>
+
+                        <button type="submit" class="search-btn">Filter</button>
+
+
+                    </div>
                 </form>
-                <div class="shops__number">
-                    1
-                </div>
+
             </div>
             <div class="shops-content">
                 <div class="shops-content__text u-margin-bottom--medium">
@@ -36,11 +51,11 @@
 
 
                 <div class="shops__category u-margin-bottom--medium">
-
+                    {{#if shops}}
                     <div class="grid-3 grid-to-2">
 
                         {{#each shops}}
-                        {{#if about}}
+
                         <div class="card shop__card shop">
                             <img src="{{mainPhoto}}" class="shop__image" alt="shop-1" />
 
@@ -58,9 +73,47 @@
                                 <a href="/store/{{slug}}" class="btn btn-block btn-primary shop__link">Visit Store</a>
                             </div>
                         </div>
-                        {{/if}}
+
                         {{/each}}
                     </div>
+                    {{else}}
+                    <p class="u-heading--large u-center-text">No shop {{searchValue}} found</p>
+                    {{/if}}
+                </div>
+
+                <div>
+                    {{#if shops}}
+
+                    {{#if pagination.next}}
+                    {{#if searchValue}}
+                    <a href="/shops?search={{searchValue}}&page={{pagination.next.page}}" class="btn btn-primary">Next
+                        &rarr;</a>
+
+
+                    {{else}}
+                    <a href="/shops?page={{pagination.next.page}}" class="btn btn-primary">Next &rarr;</a>
+                    {{/if}}
+
+                    {{/if}}
+
+                    {{/if}}
+
+
+                    {{#if shops}}
+
+                    {{#if pagination.prev}}
+
+                    {{#if searchValue}}
+                    <a href="/shops?search={{searchValue}}&page={{pagination.prev.page}}" class="btn btn-primary">&larr;
+                        Previous</a>
+
+                    {{else}}
+                    <a href="/shops?page={{pagination.prev.page}}" class="btn btn-primary">&larr; Previous</a>
+                    {{/if}}
+
+                    {{/if}}
+
+                    {{/if}}
                 </div>
 
 

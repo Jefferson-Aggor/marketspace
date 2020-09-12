@@ -1,5 +1,5 @@
 const Payment = require("../models/Payment");
-const { sendEmail } = require("../utils/utils");
+const sendEmail = require("../utils/sendEmail");
 const postPayment = async (req, res) => {
   const {
     name,
@@ -33,11 +33,10 @@ const postPayment = async (req, res) => {
     try {
       await sendEmail(mailOptions);
       req.flash("success_msg", "Order has been placed");
-      res.redirect("/");
+      res.redirect(`/product/${product}`);
     } catch (err) {
-      console.log(err);
       req.flash("error_msg", "Failed to place order");
-      res.redirect("/");
+      res.redirect(`/product/${product}`);
     }
   } catch (err) {
     console.log(err.message);

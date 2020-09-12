@@ -10,6 +10,7 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const flash = require("connect-flash");
 const methodOverride = require("method-override");
+
 const app = express();
 
 // require files
@@ -17,7 +18,14 @@ const index = require("./routes/index");
 const auth = require("./routes/auth");
 const dashboard = require("./routes/dashboard");
 const payment = require("./routes/payment");
+
 const { connectDB } = require("./config/db");
+const {
+  formatDate,
+  formatText,
+  formatNum,
+  formatLongText,
+} = require("./hbs/helpers");
 
 dotenv.config();
 // static path
@@ -44,6 +52,17 @@ app.use(methodOverride("_method"));
 // connect flash
 app.use(flash());
 
+// mongo sanitize
+// app.use(mongoSanitize());
+
+// helmet
+// app.use(helmet());
+
+// xss clean
+
+// hpp
+// app.use(hpp());
+
 app.use((req, res, next) => {
   res.locals.error_msg = req.flash("error_msg");
   res.locals.success_msg = req.flash("success_msg");
@@ -54,6 +73,7 @@ app.engine(
   "handlebars",
   exphbs({
     handlebars: allowInsecurePrototypeAccess(Handlebars),
+    helpers: { formatDate, formatNum, formatText, formatLongText },
   })
 );
 app.set("view engine", "handlebars");
@@ -65,7 +85,7 @@ app.use("/auth", auth);
 app.use("/dashboard", dashboard);
 app.use("/payment", payment);
 
-const PORT = process.env.PORT || 5800;
+const PORT = process.env.PORT || 9000;
 app.listen(PORT, () => {
   console.log(`server started on port ${PORT}`);
 });

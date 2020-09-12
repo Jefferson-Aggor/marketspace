@@ -18,7 +18,9 @@
             <!-- login -->
             <div class="box">
                 <div class="box__login">
+
                     <form action="/auth/login" method="POST" class="form section-contact__form">
+                        {{> _alerts}}
                         <h3 class="u-heading--secondary u-margin-bottom--small">
                             <i class="icon-ecommerce-bag"></i> Login To Your Shop
                         </h3>
@@ -38,10 +40,11 @@
                         <button type="submit" class="btn btn-primary btn--block u-margin-bottom--small">
                             <i class="icon-ecommerce-bag"></i> Login
                         </button>
-                        <p class="u-center-text">
-                            Don't have an account?
-                            <a href="/auth/" id="show__register">Register</a>
-                        </p>
+                        <div class="u-center-text">
+                            <a href="/auth/" id="show__register"> Don't have an account?</a>
+                            <span style="font-size: 1.5rem;">Or</span> <a href="/auth/forgotPassword">Forgot
+                                password</a>
+                        </div>
                     </form>
                 </div>
             </div>

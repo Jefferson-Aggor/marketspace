@@ -21,7 +21,7 @@ const productSchema = new Schema(
       type: Number,
       required: true,
     },
-    mainImage: {
+    mainPhoto: {
       type: String,
       required: true,
     },
@@ -42,7 +42,7 @@ const productSchema = new Schema(
       ref: "Shop",
     },
     addedAt: {
-      type: String,
+      type: Date,
       default: Date.now,
     },
   },

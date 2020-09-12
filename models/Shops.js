@@ -1,3 +1,4 @@
+const crypto = require("crypto");
 const mongoose = require("mongoose");
 const slugify = require("slugify");
 const bcrypt = require("bcryptjs");
@@ -57,7 +58,8 @@ const shopSchema = new Schema(
       minlength: [6, "minimum of 6 characters required"],
     },
     slug: String,
-
+    resetPasswordToken: String,
+    resetPasswordExpire: Date,
     createdAt: {
       type: Date,
       default: Date.now,
@@ -83,10 +85,23 @@ shopSchema.virtual("products", {
 });
 
 shopSchema.pre("save", async function (next) {
+  if (!this.isModified("password")) {
+    next();
+  }
+
   const salt = await bcrypt.genSalt(10);
   const hash = await bcrypt.hash(this.password, salt);
   this.password = hash;
 });
+
+shopSchema.pre("remove", async function (next) {
+  await this.model("Product").deleteMany({ owner: this._id });
+  next();
+});
+
+shopSchema.methods.comparePasswords = async function (password) {
+  return await bcrypt.compare(password, this.password);
+};
 
 shopSchema.methods.getSignedToken = function () {
   const shop = jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
@@ -96,9 +111,17 @@ shopSchema.methods.getSignedToken = function () {
   return shop;
 };
 
-shopSchema.methods.comparePasswords = async function (password) {
-  const compare = await bcrypt.compare(password, this.password);
-  return compare;
+shopSchema.methods.getResetToken = async function () {
+  const resetToken = crypto.randomBytes(20).toString("hex");
+
+  this.resetPasswordToken = crypto
+    .createHash("sha256")
+    .update(resetToken)
+    .digest("hex");
+
+  this.resetPasswordExpire = Date.now() + 10 * 60 * 1000;
+
+  return resetToken;
 };
 
 const shop = mongoose.model("Shop", shopSchema);

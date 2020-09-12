@@ -1,7 +1,7 @@
 <footer class="footer">
     <div class="footer-logo">
-        <h2>{{shop.name}}</h2>
-        <p>{{shop.mainText_sub_1}}</p>
+        <h2>{{#if loggedIn}} {{loggedIn.name}} {{else}} {{shop.name}}{{/if}}</h2>
+        <p>{{#if loggedIn}} {{loggedIn.mainText_sub_1}} {{else}} {{shop.mainText_sub_1}} {{/if}}</p>
     </div>
     <div class="footer-icons">
         <p><a href="#">Facebook</a></p>

@@ -18,14 +18,17 @@
                 <div class="shops__logo"> ({{loggedIn.name}})</div>
                 <ul class="u-flex h-menu">
                     <li class="h-menu-item"><a href="/store/{{loggedIn.slug}}">View Site</a></li>
-                    <li class="h-menu-item"><a href="./sales.html">Sales</a></li>
+                    <li class="h-menu-item"><a href="/dashboard/{{loggedIn._id}}/sales">Sales</a></li>
                     <li class="h-menu-item"><a href="/dashboard">Site & Products Manager</a></li>
                 </ul>
             </div>
 
             <section class=" grid-7-5 administration-grid ">
 
-                <div class="administration-content">
+                <div class="administration-content" id="content">
+                    <div class='preview-pointer pointer-right' id="pointer-right">
+                        <p>&rarr;</p>
+                    </div>
                     <form action="/dashboard/customization?_method=PUT" method="POST" enctype="multipart/form-data">
                         <div id="page-1" class=" page">
                             <p class="lead">Customization</p>
@@ -254,10 +257,38 @@
                                     </div>
 
                                     <div class="images about-image form__group ">
-                                        <input class="images-input form__input" type="file" name="image"
-                                            id="sub-product-photos" multiple />
-                                        <label for="sub-product-photos"
-                                            class="form__label u-margin-bottom--large">Additional photos </label>
+                                        <div class="images about-image form__group edit-images  ">
+                                            <div>
+
+                                                <input class="images-input form__input" type="file" name="image"
+                                                    id="sub-product-photo1" />
+
+                                                <label for="sub-product-photo1">Photo 1</label>
+                                            </div>
+                                            <div>
+
+                                                <input class="images-input form__input" type="file" name="image"
+                                                    id="sub-product-photo2" />
+
+                                                <label for="sub-product-photo2">Photo 2</label>
+                                            </div>
+                                            <div>
+
+                                                <input class="images-input form__input" type="file" name="image"
+                                                    id="sub-product-photos" />
+
+                                                <label for="sub-product-photo3">Photo 3</label>
+                                            </div>
+                                            <div>
+
+                                                <input class="images-input form__input" type="file" name="image"
+                                                    id="sub-product-photo4" />
+
+                                                <label for="sub-product-photo4">Photo 4</label>
+                                            </div>
+
+                                        </div>
+
                                     </div>
 
                                 </div>
@@ -297,6 +328,9 @@
 
 
                 <div id="preview" class="administration-preview">
+                    <div class='preview-pointer pointer-left' id="pointer-left">
+                        <p>&larr;</p>
+                    </div>
                     <header class="preview-header" id="preview-header">
                         <p class="preview-logo" id="preview-logo">{{loggedIn.name}}</p>
                         <img {{#if loggedIn.mainPhoto}} src="{{loggedIn.mainPhoto}}" {{else}} src="/img/no-photo.png"
@@ -382,7 +416,27 @@
         </section>
     </main>
 
+    <script>
+        const pointer_right = document.getElementById('pointer-right')
+        const pointer_left = document.getElementById('pointer-left')
+        const content = document.getElementById('content')
+        const preview_show = document.getElementById('preview')
+
+
+
+        const showPage = function (handler, show, hide) {
+            handler.addEventListener('click', function () {
+                hide.style.display = 'none';
+                show.style.display = "block";
+            })
+        }
+
+        showPage(pointer_right, preview_show, content)
+        showPage(pointer_left, content, preview_show)
+
+    </script>
     <script src="/js/dashboard.js"></script>
+
 </body>
 
 </html>

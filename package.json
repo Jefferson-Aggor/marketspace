@@ -17,14 +17,21 @@
     "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
     "express-handlebars": "^5.1.0",
+    "express-mongo-sanitize": "^2.0.0",
     "express-session": "^1.17.1",
     "handlebars": "^4.7.6",
+    "helmet": "^4.1.1",
+    "hpp": "^0.2.3",
+    "humanize": "0.0.9",
     "jsonwebtoken": "^8.5.1",
     "method-override": "^3.0.0",
+    "moment": "^2.27.0",
+    "momentjs": "^2.0.0",
     "mongoose": "^5.10.2",
     "multer": "^1.4.2",
     "nodemailer": "^6.4.11",
-    "slugify": "^1.4.5"
+    "slugify": "^1.4.5",
+    "xss-clean": "^0.1.1"
   },
   "devDependencies": {
     "dotenv": "^8.2.0"

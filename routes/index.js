@@ -19,8 +19,44 @@ DESC     get all shops
 METHOD   GET
 */
 router.get("/shops", async (req, res) => {
-  const shops = await Shop.find();
-  res.render("index/shops", { shops });
+  let query;
+  let searchValue = "";
+  if (req.query.search) {
+    searchValue = req.query.search;
+    query = Shop.find({ category: searchValue });
+  } else {
+    query = Shop.find();
+  }
+
+  const reqQuery = { ...req.query };
+
+  const removeFields = ["select", "page", "limit", "search"];
+
+  removeFields.forEach((param) => delete reqQuery[param]);
+
+  const page = parseInt(req.query.page, 10) || 1;
+  const limit = parseInt(req.query.limit, 10) || 6;
+
+  const startIndex = (page - 1) * limit;
+  const endIndex = page * limit;
+  const total = await Shop.countDocuments();
+
+  query = query.skip(startIndex).limit(limit);
+
+  const shops = await query;
+  const pagination = {};
+  if (endIndex < total) {
+    pagination.next = {
+      page: page + 1,
+    };
+  }
+
+  if (startIndex > 0) {
+    pagination.prev = {
+      page: page - 1,
+    };
+  }
+  res.render("index/shops", { shops, pagination, searchValue });
 });
 
 router.get("/store/:slug", async (req, res) => {
@@ -41,7 +77,6 @@ router.get("/product/:_id", async (req, res) => {
       _id: req.params._id,
     }).populate({
       path: "owner",
-      select: "name phone",
     });
 
     if (!product) {

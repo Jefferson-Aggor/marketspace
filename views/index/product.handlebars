@@ -20,12 +20,13 @@
                 <div class="shops__logo">{{product.owner.name}}</div>
             </div>
             <section class="product-section">
+                {{> _alerts}}
                 <div class="grid-3 product-grid-3">
                     <div>
                         <div class="product-thumbails u-margin-bottom--large">
                             <div class="product-mainImage">
-                                <a href="{{product.mainImage}}" data-lightbox="home-images">
-                                    <img src="{{product.mainImage}}" alt="" class="product-main-image" /></a>
+                                <a href="{{product.mainPhoto}}" data-lightbox="home-images">
+                                    <img src="{{product.mainPhoto}}" alt="" class="product-main-image" /></a>
                             </div>
                             <div class="product-subImages">
                                 <div class="grid-4">
@@ -104,7 +105,6 @@
                             <a href="#">#{{product.tags}}</a>
                         </div>
                     </div>
-
                     <div class="product-payment">
                         <p class="lead"><i class="icon-ecommerce-money"></i> Payment</p>
                         <div class="u-divider u-margin-bottom--medium"></div>
@@ -159,6 +159,18 @@
                     </div>
                 </div>
             </section>
+            <div style="height: 10vh;"></div>
+            <footer class="footer">
+                <div class="footer-logo">
+                    <h2>{{product.owner.name}}</h2>
+                    <p>{{product.owner.mainText_sub_1}}</p>
+                </div>
+                <div class="footer-icons">
+                    <p><a href="#">Facebook</a></p>
+                    <p><a href="#">Twitter</a></p>
+                    <p><a href="#">Instagram</a></p>
+                </div>
+            </footer>
         </section>
     </main>
 

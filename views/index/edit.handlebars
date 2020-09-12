@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/css/ecommerce.css" />
+    <link rel="stylesheet" href="/css/lightbox.min.css">
+
+    <title>Edit | {{product.name}}</title>
+</head>
+
+<body>
+    <main class="index-main">
+        {{> _navbar}}
+        <section class="main-content edit">
+            <div class="u-space-between shops__nav">
+                <div class="shops__logo">Shops</div>
+                <form action="" class="shops__form">
+                    <input type="search" name="" id="" placeholder="Search Shops" />
+                </form>
+                <div class="shops__number">1</div>
+            </div>
+            <header class="edit-header">
+                <h3 class="edit-header-text">edit your product</h3>
+            </header>
+            <main class="edit-content grid-to-1">
+                <form action="/dashboard/edit/{{product._id}}/?_method=PUT" method="post" enctype="multipart/form-data"
+                    class="edit-form">
+                    <div class="text main-text form__group">
+                        <div class="main-text u-margin-bottom--medium">
+
+                            <input class="form__input" type="text" name="name" id="product-name"
+                                placeholder="Product Name" maxlength="30" value="{{product.name}}" required />
+                            <label for="product-name" class="form__label">Product Name</label>
+
+                            <textarea class="texts-input form__input" name="description" id="product-description"
+                                cols="30" rows="5" placeholder="Description" maxlength="500"
+                                spellcheck="true">{{product.description}}</textarea>
+                            <label for="product-description" class="form__label"
+                                id="product-description-label">Description</label>
+
+
+                            <div class="grid-2">
+                                <div class="form__group">
+                                    <select class="form__input" id="product-currency" name="currency" />
+                                    <option {{#if product.currency}} value="{{product.currency}}" selected {{else}}
+                                        value='' selected default {{/if}}>Currency</option>
+                                    <option value="ghs">Ghana Cedis</option>
+                                    <option value="$">US Dollars</option>
+                                    </select>
+
+                                </div>
+                                <div class="form__group">
+                                    <input class="form__input" type="number" min="0" placeholder="Price"
+                                        id="product-price" name="price" required value="{{product.price}}" />
+                                    <label class="form__label" for="product-price">Price</label>
+                                </div>
+
+
+                            </div>
+                            <div class="form__group">
+                                <input class="form__input" type="number" placeholder="Products Available"
+                                    id="product-available" name="quantity" min="0" value="{{product.quantity}}" />
+                                <label class="form__label" for="product-available"> Products Available</label>
+                            </div>
+
+                        </div>
+
+                        <div class="u-margin-bottom--medium">
+
+                            <div class="images about-image form__group ">
+                                <a href="{{product.mainPhoto}}" data-lightbox="{{product.mainPhoto}}">Main Image</a>
+                                <input class="images-input form__input" type="file" name="main-product-image"
+                                    id="main-product-image" />
+
+                            </div>
+
+                            <div class="images about-image form__group edit-images  ">
+                                <div>
+
+                                    {{#if product.photo_1}}
+                                    <a href="{{product.photo_1}}" data-lightbox="{{product.photo_1}}">Photo-1</a>
+                                    {{else}}
+                                    <p class="u-alert">No Image</p>
+                                    {{/if}}
+                                    <input class="images-input form__input" type="file" name="image" />
+                                </div>
+                                <div>
+                                    {{#if product.photo_2}}
+                                    <a href="{{product.photo_2}}" data-lightbox="{{product.photo_2}}">Photo-2</a>
+                                    {{else}}
+                                    <p class="u-alert">No Image</p>
+                                    {{/if}}
+                                    <input class="images-input form__input" type="file" name="image" />
+                                </div>
+                                <div>
+                                    {{#if product.photo_3}}
+                                    <a href="{{product.photo_3}}" data-lightbox="{{product.photo_3}}">Photo-3</a>
+                                    {{else}}
+                                    <p class="u-alert">No Image</p>
+                                    {{/if}}
+                                    <input class="images-input form__input" type="file" name="image" />
+                                </div>
+                                <div>
+                                    {{#if product.photo_4}}
+                                    <a href="{{product.photo_4}}" data-lightbox="{{product.photo_4}}">Photo-4</a>
+                                    {{else}}
+                                    <p class="u-alert">No Image</p>
+                                    {{/if}}
+                                    <input class="images-input form__input" type="file" name="image" />
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="form__group">
+
+                        <input class="form__input" type="text" name="tags" id="tags" placeholder="Tags "
+                            value='{{product.tags}}' />
+                        <label for="tags" class="form__label"></label>
+                    </div>
+
+
+                    <button type="submit" class="btn btn--block btn-primary">Update Product</button>
+
+
+                </form>
+
+            </main>
+
+            {{> _footer}}
+        </section>
+    </main>
+
+    <script src="/js/lightbox-plus-jquery.js"></script>
+</body>
+
+</html>
