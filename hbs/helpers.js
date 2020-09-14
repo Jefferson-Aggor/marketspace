@@ -6,7 +6,7 @@ const formatDate = (date) => {
 };
 
 const formatText = (str) => {
-  return humanize.linebreaks(str);
+  return humanize.nl2br(str);
 };
 
 const formatLongText = (str) => {

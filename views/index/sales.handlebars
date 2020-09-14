@@ -14,7 +14,7 @@
     <main class="index-main">
         {{> _navbar}}
         <section class="main-content">
-            {{> _alerts}}
+
             <div class="u-space-between shops__nav">
                 <div class="shops__logo">{{shop.name}}</div>
                 <form action="" class="shops__form">
@@ -24,6 +24,7 @@
             </div>
             <div class="sale-content">
                 <div class="u-margin-bottom--large">
+                    {{> _alerts}}
                     <h3 class="u-heading--large">Manage your shop.</h3>
                     <div class="u-divider"></div>
                 </div>
@@ -51,11 +52,13 @@
 
                             <td>{{location}}</td>
                             <td><a href="tel:{{phone}}">{{phone}}</a></td>
-                            <td>{{#if new}}
+                            <td>
+                                {{#if new}}
                                 <a href="/payment/{{_id}}/formatorder?_method=PUT" class="u-alert">new</a>
                                 {{else}}
                                 processed
-                                {{/if}}</td>
+                                {{/if}}
+                            </td>
                             <td>{{formatDate date}}</td>
 
                         </tbody>

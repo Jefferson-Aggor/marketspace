@@ -112,7 +112,8 @@ const gotoSales = async (req, res, next) => {
         path: "owner",
         select: "name slug mainText_1,mainText_sub_1",
       })
-      .populate("orders");
+      .populate("orders")
+      .sort({ _id: -1 });
 
     res.render("index/sales", { product });
   } catch (err) {

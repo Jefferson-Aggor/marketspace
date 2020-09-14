@@ -69,12 +69,12 @@
                         <div class="product-description u-margin-bottom--medium">
                             <div class="tag">Description</div>
                             <p>
-                                {{product.description}}
+                                {{{formatText product.description}}}
                             </p>
                         </div>
                         <div class="price">
                             <p class="tag">price</p>
-                            <span class="product-price">{{product.currency}} {{product.price}}</span>
+                            <span class="product-price">{{product.currency}} {{formatNum product.price}}</span>
                         </div>
 
                         {{#if product.colors}}
@@ -189,11 +189,11 @@
 
         if (toNum == 0) {
             num.innerText = `*out of stock`;
-        } else if (toNum == 1) {
-            num.innerText = `${toNum} pc`;
         } else {
-            num.innerText = `${toNum} pcs`;
+            num.innerText = `in stock`;
         }
+
+
     </script>
 </body>
 

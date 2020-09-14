@@ -68,14 +68,14 @@ const formatPayment = async (req, res, next) => {
         "error_msg",
         `Product with ordered id of ${req.params._id} not found `
       );
-      res.redirect(`/${req.user._id}/sales`);
+      res.redirect(`/dashboard/${req.user._id}/sales`);
     }
 
     payment.new = false;
 
     payment.save();
     req.flash("success_msg", "Order has been processed");
-    res.redirect(`/${req.user._id}/sales`);
+    res.redirect(`/dashboard/${req.user._id}/sales`);
   } catch (error) {
     console.log(err.message);
   }
