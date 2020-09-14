@@ -113,9 +113,9 @@ const forgotPassword = async (req, res, next) => {
       <strong>NB this link will be inactive after 10 minutes</strong>
       `,
     };
-    await sendEmail(options);
 
     await shop.save({ validateBeforeSave: false });
+    await sendEmail(options);
 
     req.flash(
       "success_msg",
@@ -157,10 +157,9 @@ const resetPassword = async (req, res, next) => {
 
     shop.password = req.body.password;
 
-    await shop.save();
-
     shop.resetPasswordToken = undefined;
     shop.resetPasswordExpire = undefined;
+    await shop.save();
 
     req.flash("success_msg", "Password reset successful");
     res.redirect("/auth/login");
@@ -170,6 +169,7 @@ const resetPassword = async (req, res, next) => {
     shop.resetPasswordToken = undefined;
     shop.resetPasswordExpire = undefined;
 
+    await shop.save();
     res.redirect("/auth/login");
   }
 };

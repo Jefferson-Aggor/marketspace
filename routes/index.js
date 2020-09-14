@@ -4,6 +4,7 @@ const router = express.Router();
 
 const Shop = require("../models/Shops");
 const Product = require("../models/Products");
+
 /*
 PATH     /
 DESC     entry point into the site

@@ -34,6 +34,10 @@ const paymentSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Product",
   },
+  new: {
+    type: Boolean,
+    default: true,
+  },
   orderedAt: {
     type: Date,
     default: Date.now,

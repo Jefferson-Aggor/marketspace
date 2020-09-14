@@ -113,6 +113,7 @@
                             only payment option available.
                         </p>
                         <form action="/payment/{{product._id}}" method="POST">
+                            <input type="text" name="owner_email" value="{{product.owner.email}}" hidden>
                             <input type="text" name="product" value="{{product._id}}" hidden>
                             <input type="text" name="product_name" value="{{product.name}}" hidden>
                             <input type="text" name="shop_name" value="{{product.owner.name}}" hidden>

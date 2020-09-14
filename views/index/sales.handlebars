@@ -38,18 +38,26 @@
                             <th>Product</th>
                             <th>Location</th>
                             <th>Phone</th>
+                            <th>Status</th>
                             <th>Date</th>
                         </thead>
                         {{#each product}}
 
                         {{#each orders}}
+
                         <tbody>
                             <td> <strong>{{name}}</strong> </td>
                             <td>{{product_name}}</td>
 
                             <td>{{location}}</td>
                             <td><a href="tel:{{phone}}">{{phone}}</a></td>
+                            <td>{{#if new}}
+                                <a href="/payment/{{_id}}/formatorder?_method=PUT" class="u-alert">new</a>
+                                {{else}}
+                                processed
+                                {{/if}}</td>
                             <td>{{formatDate date}}</td>
+
                         </tbody>
                         {{/each}}
 
@@ -91,8 +99,11 @@
 
                     </table>
                     {{else}}
-                    <p class="u-alert" style="margin-top: 2rem;">No Products Added Yet <a href="/dashboard">Add
-                            Product</a></p>
+                    <p class="u-alert" style="margin-top: 2rem;">No Products Added Yet
+                        <a href="/dashboard">
+                            Add Product
+                        </a>
+                    </p>
                     {{/if}}
 
 
