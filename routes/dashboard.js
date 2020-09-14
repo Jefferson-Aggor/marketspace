@@ -53,7 +53,7 @@ router
   .put(
     requireLogin,
     multerDestination(
-      `/uploads/products/updated/${new Date().getFullYear()}/${
+      `./uploads/products/updated/${new Date().getFullYear()}/${
         new Date().getMonth + 1
       }`
     ).array("image"),
