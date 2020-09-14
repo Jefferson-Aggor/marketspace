@@ -91,10 +91,12 @@ const addProduct = async (req, res, next) => {
       new Product(newProduct)
         .save()
         .then((product) => {
+          req.flash("success_msg", "Product added");
           res.redirect("/dashboard");
         })
         .catch((err) => {
           console.log(err);
+          req.flash("error_msg", "Failed to add product");
           res.redirect("/dashboard");
         });
     });

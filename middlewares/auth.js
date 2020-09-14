@@ -4,6 +4,7 @@ const Shop = require("../models/Shops");
 const requireLogin = async (req, res, next) => {
   const token = req.cookies.token;
   if (!token) {
+    req.flash("error_msg", "Unauthorized! Please login");
     return res.redirect("/auth/login");
   }
 
@@ -15,6 +16,8 @@ const requireLogin = async (req, res, next) => {
     if (!shop) {
       res.locals.loggedIn = null;
       req.user = null;
+      req.flash("error_msg", "Invalid Credentials");
+      return res.redirect("/auth/login");
     }
     res.locals.loggedIn = shop;
     req.user = shop;
@@ -22,6 +25,7 @@ const requireLogin = async (req, res, next) => {
   } catch (err) {
     res.locals.loggedIn = null;
     req.user = null;
+    req.flash("error_msg", "Unauthorized! Please login");
     res.redirect("/auth/login");
   }
 };

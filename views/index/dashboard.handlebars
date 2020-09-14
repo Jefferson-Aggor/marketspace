@@ -15,7 +15,7 @@
         {{> _navbar}}
         <section class="main-content">
             <div class="u-space-between shops__nav">
-                <div class="shops__logo"> ({{loggedIn.name}})</div>
+                <div class="shops__logo"> {{loggedIn.name}}</div>
                 <ul class="u-flex h-menu">
                     <li class="h-menu-item"><a href="/store/{{loggedIn.slug}}">View Site</a></li>
                     <li class="h-menu-item"><a href="/dashboard/{{loggedIn._id}}/sales">Sales</a></li>
@@ -26,6 +26,9 @@
             <section class=" grid-7-5 administration-grid ">
 
                 <div class="administration-content" id="content">
+                    <div class="alert alert-success u-margin-bottom--small">
+                        <p style="text-transform: capitalize;">Welcome <strong>{{loggedIn.name}}</strong></p>
+                    </div>
                     <div class='preview-pointer pointer-right' id="pointer-right">
                         <p>&rarr;</p>
                     </div>
@@ -422,6 +425,7 @@
         const content = document.getElementById('content')
         const preview_show = document.getElementById('preview')
 
+        const alerts = document.querySelectorAll('.alert')
 
 
         const showPage = function (handler, show, hide) {
@@ -433,6 +437,16 @@
 
         showPage(pointer_right, preview_show, content)
         showPage(pointer_left, content, preview_show)
+
+
+
+
+        alerts.forEach(alert => {
+            setTimeout(() => {
+                alert.style.display = 'none';
+
+            }, 8000)
+        })
 
     </script>
     <script src="/js/dashboard.js"></script>

@@ -43,9 +43,11 @@ const register = async (req, res, next) => {
     }
 
     const shop = await new Shop(newShop).save();
+    req.flash("success_msg", "Login to your dashboard");
     res.redirect("/auth/login");
   } catch (err) {
-    next(err.message);
+    req.flash("error_msg", "Could not register, try again");
+    res.redirect("/auth");
   }
 };
 
