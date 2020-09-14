@@ -3,7 +3,6 @@ const sendEmail = require("../utils/sendEmail");
 
 const Shop = require("../models/Shops");
 
-let errors = [];
 // PATH         /auth/register
 //DESC          Register a shop to db
 //METHOD        POST
@@ -20,7 +19,8 @@ const register = async (req, res, next) => {
     };
 
     if (password !== password2) {
-      errors.push({ msg: "Passwords do not match" });
+      req.flash("error_msg", "Passwords do not match");
+      return res.redirect("/auth");
     }
 
     const verifyShop = await Shop.findOne({ email });
@@ -28,18 +28,6 @@ const register = async (req, res, next) => {
     if (verifyShop) {
       req.flash("error_msg", "Shop already exists");
       return res.redirect("/auth");
-    }
-
-    if (errors.length > 0) {
-      return res.render("auth/auth", {
-        errors,
-        name,
-        email,
-        phone,
-        category,
-        password,
-        password2,
-      });
     }
 
     const shop = await new Shop(newShop).save();
