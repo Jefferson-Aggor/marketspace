@@ -71,7 +71,10 @@
                                     {{category}}</div>
 
                                 <p>
-                                    {{about}}
+                                    {{#if about}}
+                                    {{formatLongText about}}
+
+                                    {{/if}}
                                 </p>
 
                                 <a href="/store/{{slug}}" class="btn btn-block btn-primary shop__link">Visit Store</a>

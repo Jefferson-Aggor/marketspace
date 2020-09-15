@@ -720,6 +720,7 @@ th {
   color: #fff;
 }
 .footer-logo {
+  text-transform: capitalize;
   padding: 5rem;
   text-align: center;
 }
@@ -1206,6 +1207,11 @@ th {
 
   font-family: "Courier New", Courier, monospace;
 }
+@media only screen and (max-width: 34.38em) {
+  .slider_logo {
+    font-size: 1.8rem;
+  }
+}
 .slider_image {
   width: inherit;
   object-fit: cover;
@@ -1322,7 +1328,11 @@ th {
 .about-card:hover {
   box-shadow: 0 2rem 5rem rgba(0, 5, 0, 0.7);
 }
-
+@media only screen and (max-width: 34.38em) {
+  .about-card p {
+    font-size: 1.5rem;
+  }
+}
 .about-content {
   padding: 5rem 2rem;
 }
@@ -1334,6 +1344,12 @@ th {
 
 .about-image {
   width: 100%;
+}
+
+@media only screen and (max-width: 34.38em) {
+  .about-image {
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 75em) {

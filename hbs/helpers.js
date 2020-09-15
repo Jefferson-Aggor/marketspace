@@ -10,7 +10,7 @@ const formatText = (str) => {
 };
 
 const formatLongText = (str) => {
-  return humanize.truncatechars(str, 150);
+  return humanize.truncatechars(str, 100);
 };
 const formatNum = (num) => {
   return humanize.numberFormat(num);
