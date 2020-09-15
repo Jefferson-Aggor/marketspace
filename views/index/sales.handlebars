@@ -38,9 +38,6 @@
                     </h2>
 
                     <table>
-
-                        {{#each product}}
-                        {{#if orders}}
                         <thead>
                             <th>Name</th>
                             <th>Product</th>
@@ -49,6 +46,8 @@
                             <th>Status</th>
                             <th>Date</th>
                         </thead>
+
+                        {{#each product}}
                         {{#each orders}}
                         <tbody>
                             <td> <strong>{{name}}</strong> </td>
@@ -67,9 +66,8 @@
 
                         </tbody>
                         {{/each}}
-                        {{else}}
-                        <p>No orders made yet!</p>
-                        {{/if}}
+
+
 
 
                         {{/each}}
