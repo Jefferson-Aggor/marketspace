@@ -91,14 +91,14 @@
                     {{#each shop.products}}
 
                     <div class="card shop">
-                        <img src="{{mainPhoto}}" class="shop__image" alt="shop-1" />
+                        <img src="{{mainPhoto}}" class="shop__image" alt="{{name}}" draggable="false" />
 
                         <div class="shop__description store-description">
-                            <h2 class="">
+                            <h2 class="" style="text-transform: capitalize;">
                                 {{name}}
                             </h2>
                             <p>
-                                {{formatLongText description}}
+                                {{{formatLongText description}}}
                             </p>
                             <p class="price">{{currency}} {{formatNum price}}</p>
                             <a href="/product/{{_id}}" class="btn btn-block btn-primary shop__link">View
@@ -118,11 +118,16 @@
                         <div class="about-content">
                             <h2 class="u-heading--large">About.</h2>
                             <p>
-                                {{shop.about}}
+                                {{#if shop.about}}
+                                {{{formatText shop.about}}}
+
+                                {{else}}
+                            <p>No description yet</p>
+                            {{/if}}
                             </p>
                         </div>
                         <img {{#if shop.aboutImage}} src="{{shop.aboutImage}}" {{else}} src="/img/no-photo.png" {{/if}}
-                            alt="about image" class="about-image" />
+                            alt="about image" class="about-image" draggable="false" />
                     </div>
                 </div>
             </section>

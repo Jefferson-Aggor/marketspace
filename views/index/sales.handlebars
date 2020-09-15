@@ -16,12 +16,16 @@
         <section class="main-content sales-content">
 
             <div class="u-space-between shops__nav">
-                <div class="shops__logo">{{shop.name}}</div>
-                <form action="" class="shops__form">
-                    <input type="search" name="" id="" placeholder="Search Shops" />
-                </form>
-                <div class="shops__number">1</div>
+                <div class="shops__logo"> <a href="/store/{{loggedIn.slug}}" style="color: #fff;">{{loggedIn.name}}</a>
+                </div>
+                <ul class="u-flex h-menu">
+
+                    <li class="h-menu-item"><a href="/dashboard/{{loggedIn._id}}/sales">Sales</a></li>
+                    <li class="h-menu-item"><a href="/dashboard">Your dashboard</a></li>
+                </ul>
             </div>
+
+
             <div class="sale-content">
                 <div class="u-margin-bottom--large">
                     {{> _alerts}}
@@ -30,10 +34,13 @@
                 </div>
                 <div class="u-margin-bottom--large">
                     <h2 class="u-heading--tertiary">
-                        <i class="icon-ecommerce-bag"></i>YOUR SALES.
+                        <i class="icon-ecommerce-bag"></i>YOUR ORDERS.
                     </h2>
 
                     <table>
+
+                        {{#each product}}
+                        {{#if orders}}
                         <thead>
                             <th>Name</th>
                             <th>Product</th>
@@ -42,10 +49,7 @@
                             <th>Status</th>
                             <th>Date</th>
                         </thead>
-                        {{#each product}}
-
                         {{#each orders}}
-
                         <tbody>
                             <td> <strong>{{name}}</strong> </td>
                             <td>{{product_name}}</td>
@@ -63,6 +67,10 @@
 
                         </tbody>
                         {{/each}}
+                        {{else}}
+                        <p>No orders made yet!</p>
+                        {{/if}}
+
 
                         {{/each}}
                     </table>
@@ -118,7 +126,7 @@
                     </h2>
 
                     <a href="" class="btn btn-danger" id="showModal">DELETE
-                        SHOP</a>
+                        SHOP </a>
 
                     <div class="popup" id="popup">
                         <div class="popup-content" id="popup-content">

@@ -36,31 +36,38 @@ const updateShop = (req, res, next) => {
 
 const updateAbout = async (req, res, next) => {
   const shop = await Shop.findById(req.user._id);
+  const { facebook, twitter, instagram, about_shop } = req.body;
 
-  shop.about = req.body.about_shop;
+  shop.about = about_shop;
+  shop.facebook = facebook;
+  shop.twitter = twitter;
+  shop.instagram = instagram;
 
   const image = async () => {
-    await cloudinary.uploader.upload(
-      req.file.path,
-      eagerOptions,
-      (err, result) => {
-        if (err) {
-          console.log(err);
+    if (req.file) {
+      await cloudinary.uploader.upload(
+        req.file.path,
+        eagerOptions,
+        (err, result) => {
+          if (err) {
+            console.log(err);
+          }
+          shop.aboutImage = result.eager[0].secure_url;
         }
-        shop.aboutImage = result.eager[0].secure_url;
-      }
-    );
+      );
+    }
   };
 
   image().then((data) => {
     shop
       .save()
       .then(() => {
+        req.flash("success_msg", "Shop profile updated");
         res.redirect("/dashboard");
       })
       .catch((err) => {
+        req.flash("error_msg", "Could not update shop profile");
         res.redirect("/dashboard");
-        console.log(err.message);
       });
   });
 };

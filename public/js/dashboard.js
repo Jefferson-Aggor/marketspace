@@ -204,6 +204,7 @@ const renderTexts = function (handle, placeholder, message) {
   if (handle.value == "") {
     placeholder.innerText = message;
   } else {
+    displayShow(about_preview);
     placeholder.innerText = handle.value;
   }
 
@@ -213,12 +214,12 @@ const renderTexts = function (handle, placeholder, message) {
     if (e.target.maxLength > 0) {
       showNumber(e.target);
     }
-    if (e.target.id === "about-shop") {
-      displayShow(about_preview);
-    }
 
     if (e.target.id === "product-name") {
       displayShow(preview_product);
+    }
+    if (e.target.id === "product-name") {
+      displayShow(about_preview);
     }
 
     if (handle.value != "") {
@@ -245,7 +246,7 @@ renderTexts(product_description, preview_product_description, "Description");
 renderTexts(product_price, preview_product_price, "");
 
 imageHandler(mainImage, previewImage);
-imageHandler(about_image, preview_about_image);
+// imageHandler(about_image, preview_about_image);
 imageHandler(primaryImage, previewImage);
 imageHandler(secondaryImage, previewImage);
 imageHandler(product_mainImage, preview_product_image);

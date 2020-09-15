@@ -1335,11 +1335,6 @@ th {
 .about-image {
   width: 100%;
 }
-@media only screen and (max-width: 34.38em) {
-  .about-image {
-    display: none;
-  }
-}
 
 @media only screen and (max-width: 75em) {
   .about-image {
@@ -1426,7 +1421,7 @@ th {
 .administration-grid {
   grid-gap: 0rem !important;
 }
-@media only screen and (max-width: 62.82em) {
+@media only screen and (max-width: 52.5em) {
   .administration-grid {
     display: block !important;
   }
@@ -1462,14 +1457,14 @@ th {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 5, 0, 0.7);
+  background-color: rgba(0, 5, 0, 0.4);
 }
 
 .preview-logo {
   position: absolute;
   top: 1rem;
   left: 1rem;
-  font-size: 2rem;
+  font-size: 1.6rem;
   z-index: 2;
   color: #fff;
   text-transform: capitalize;
@@ -1485,7 +1480,7 @@ th {
 }
 
 .preview-mainText {
-  font-size: 4rem;
+  font-size: 3rem;
 }
 
 .preview-subText {

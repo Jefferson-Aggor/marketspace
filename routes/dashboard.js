@@ -20,7 +20,15 @@ router.get("/", requireLogin, (req, res) => {
 
 router
   .route("/customization")
-  .put(requireLogin, multerDestination("./uploads").array("image"), updateShop);
+  .put(
+    requireLogin,
+    multerDestination(
+      `./uploads/customization/${new Date().getFullYear()}/${
+        new Date().getMonth() + 1
+      }`
+    ).array("image"),
+    updateShop
+  );
 
 router
   .route("/details")
