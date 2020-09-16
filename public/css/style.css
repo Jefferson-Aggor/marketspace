@@ -1346,12 +1346,6 @@ th {
   width: 100%;
 }
 
-@media only screen and (max-width: 34.38em) {
-  .about-image {
-    display: none;
-  }
-}
-
 @media only screen and (max-width: 75em) {
   .about-image {
     margin: 2.5rem 0;
