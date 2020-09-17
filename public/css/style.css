@@ -723,6 +723,8 @@ th {
 }
 .footer-logo h2 {
   font-size: 5rem;
+  font-family: cursive;
+  text-transform: capitalize;
   font-weight: 300;
 }
 @media only screen and (max-width: 52.5em) {
@@ -1224,6 +1226,7 @@ th {
   left: 3rem;
   font-size: 2rem;
   font-family: cursive;
+  text-transform: capitalize;
   color: #fff;
   z-index: 3;
 }
@@ -1257,12 +1260,13 @@ th {
 @media only screen and (max-width: 34.38em) {
   .slider_text h3 {
     font-size: 2rem !important;
-    font-weight: 200;
+    font-weight: 400;
   }
 }
 .slider_text p {
   font-family: monospace;
   font-size: 2rem;
+  font-weight: 300;
   animation-name: slide-left;
   animation-duration: 1s;
   color: #f1f1f1;
