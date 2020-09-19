@@ -52,6 +52,7 @@ const postPayment = async (req, res) => {
       await sendEmail(mailToOwner);
     } catch (err) {
       req.flash("error_msg", "Failed to place order");
+      console.log(err);
       res.redirect(`/product/${product}`);
     }
   } catch (err) {

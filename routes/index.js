@@ -61,9 +61,9 @@ router.get("/shops", async (req, res) => {
 });
 
 router.get("/store/:slug", async (req, res) => {
-  const shop = await Shop.findOne({ slug: req.params.slug }).populate(
-    "products"
-  );
+  const shop = await Shop.findOne({ slug: req.params.slug })
+    .populate("products")
+    .sort({ _id: -1 });
 
   if (!shop) {
     req.flash("error_msg", "Shop not found");

@@ -103,6 +103,7 @@ shopSchema.virtual("products", {
   localField: "_id",
   foreignField: "owner",
   justOne: false,
+  options: { sort: { _id: -1 } },
 });
 
 shopSchema.pre("save", async function (next) {

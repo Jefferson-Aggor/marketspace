@@ -63,6 +63,7 @@ productSchema.virtual("orders", {
   localField: "_id",
   foreignField: "product",
   justOne: false,
+  options: { sort: { _id: -1 } },
 });
 
 const product = mongoose.model("Product", productSchema);
