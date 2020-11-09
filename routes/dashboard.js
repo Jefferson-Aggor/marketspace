@@ -10,6 +10,7 @@ const {
   deleteProduct,
   updateProduct_get,
   updateProduct_handler,
+  updateBasicInfo,
 } = require("../controllers/dashboard");
 const { requireLogin } = require("../middlewares/auth");
 const multerDestination = require("../utils/multerDestination");
@@ -19,7 +20,7 @@ router.get("/", requireLogin, (req, res) => {
 });
 
 router
-  .route("/customization")
+  .route("/customize")
   .put(
     requireLogin,
     multerDestination(
@@ -28,18 +29,6 @@ router
       }`
     ).array("image"),
     updateShop
-  );
-
-router
-  .route("/details")
-  .put(
-    requireLogin,
-    multerDestination(
-      `./uploads/about-images/${new Date().getFullYear()}/${
-        new Date().getMonth() + 1
-      }`
-    ).single("image"),
-    updateAbout
   );
 
 router
@@ -75,5 +64,8 @@ router.route("/:_id/delete").get(requireLogin, deleteShop);
 
 // deletes a product
 router.route("/delete/:_id").get(requireLogin, deleteProduct);
+
+// Update basic info
+router.route("/basic-info/:_id").put(requireLogin, updateBasicInfo);
 
 module.exports = router;

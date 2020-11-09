@@ -14,61 +14,25 @@ const eagerOptions = { eager: [{ quality: 50 }] };
 const updateShop = (req, res, next) => {
   Shop.findById(req.user._id).then((shop) => {
     shop.mainText_1 = req.body.mainText_1;
-    shop.mainText_sub_1 = req.body.mainText_sub_1;
+
     shop.mainText_2 = req.body.mainText_2;
-    shop.mainText_sub_2 = req.body.mainText_sub_2;
+
     shop.mainText_3 = req.body.mainText_3;
-    shop.mainText_sub_3 = req.body.mainText_sub_3;
 
     imageHandler(req.files, shop).then((images) => {
       shop
         .save()
         .then((shop) => {
           console.log(shop);
-          res.redirect("/dashboard");
+          req.flash("success_msg", "Shop customized");
+          res.redirect(`/${req.user.slug}/customize`);
         })
         .catch((err) => {
           console.log(err);
+          req.flash("error_msg", "Customization failed");
+          res.redirect(`/${req.user.slug}/customize`);
         });
     });
-  });
-};
-
-const updateAbout = async (req, res, next) => {
-  const shop = await Shop.findById(req.user._id);
-  const { facebook, twitter, instagram, about_shop } = req.body;
-
-  shop.about = about_shop;
-  shop.facebook = facebook;
-  shop.twitter = twitter;
-  shop.instagram = instagram;
-
-  const image = async () => {
-    if (req.file) {
-      await cloudinary.uploader.upload(
-        req.file.path,
-        eagerOptions,
-        (err, result) => {
-          if (err) {
-            console.log(err);
-          }
-          shop.aboutImage = result.eager[0].secure_url;
-        }
-      );
-    }
-  };
-
-  image().then((data) => {
-    shop
-      .save()
-      .then(() => {
-        req.flash("success_msg", "Shop profile updated");
-        res.redirect("/dashboard");
-      })
-      .catch((err) => {
-        req.flash("error_msg", "Could not update shop profile");
-        res.redirect("/dashboard");
-      });
   });
 };
 
@@ -79,7 +43,6 @@ const addProduct = async (req, res, next) => {
       product_description,
       currency,
       product_price,
-      sizes_available,
       products_available,
       tags,
     } = req.body;
@@ -89,7 +52,6 @@ const addProduct = async (req, res, next) => {
       currency,
       price: product_price,
       quantity: products_available,
-      available_sizes: sizes_available,
       tags,
       owner: req.user._id,
     };
@@ -99,17 +61,18 @@ const addProduct = async (req, res, next) => {
         .save()
         .then((product) => {
           req.flash("success_msg", "Product added");
-          res.redirect("/dashboard");
+          res.redirect(`/${req.user.slug}/add-product`);
         })
         .catch((err) => {
           console.log(err);
           req.flash("error_msg", "Failed to add product");
-          res.redirect("/dashboard");
+          res.redirect(`/${req.user.slug}/add-product`);
         });
     });
   } catch (err) {
     console.log(err.message);
-    res.redirect("/dashboard");
+    req.flash("error_msg", "Failed to add product");
+    res.redirect(`/${req.user.slug}/add-product`);
   }
 };
 
@@ -203,13 +166,49 @@ const updateProduct_handler = async (req, res, next) => {
   });
 };
 
+const updateBasicInfo = async (req, res, next) => {
+  try {
+    const {
+      name,
+      email,
+      phone,
+      category,
+      about_shop,
+      facebook,
+      twitter,
+      instagram,
+    } = req.body;
+    const shop = await Shop.findById(req.params._id);
+
+    if (!shop) {
+      return console.log("Shop not found");
+    }
+
+    shop.name = name;
+    shop.email = email;
+    shop.phone = phone;
+    shop.category = category;
+    shop.about = about_shop;
+    shop.facebook = facebook;
+    shop.twitter = twitter;
+    shop.instagram = instagram;
+
+    shop.save();
+    req.flash("success_msg", "Shop info updated.");
+    res.redirect("/dashboard");
+  } catch (err) {
+    req.flash("error_msg", "Shop info update failed. Try again.");
+    res.redirect("/dashboard");
+  }
+};
+
 module.exports = {
   updateShop,
-  updateAbout,
   addProduct,
   gotoSales,
   deleteShop,
   deleteProduct,
   updateProduct_get,
   updateProduct_handler,
+  updateBasicInfo,
 };

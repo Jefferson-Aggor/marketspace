@@ -1,0 +1,25 @@
+<div class="administration-nav">
+    <ul>
+        <li>
+            <a href="/dashboard" class="administration-nav-link"> <span class="administration-nav-link-text">Basic
+                    Info</span> <i class="fas fa-user-edit"></i></i></a>
+        </li>
+        <li>
+            <a href="/{{loggedIn.slug}}/customize" class="administration-nav-link"> <span
+                    class="administration-nav-link-text">Customize</span> <i class="fas fa-paint-roller"></i></a>
+        </li>
+        <li>
+            <a href="/{{loggedIn.slug}}/add-product" class="administration-nav-link"> <span
+                    class="administration-nav-link-text">Add Products </span> <i class="fas fa-plus-square"></i></a>
+        </li>
+        <li>
+            <a href="/dashboard/{{loggedIn._id}}/sales" class="administration-nav-link"> <span
+                    class="administration-nav-link-text">Analytics</span> <i class="fas fa-chart-bar"></i></a>
+        </li>
+
+        <li>
+            <a href="/store/{{loggedIn.slug}}" class="administration-nav-link"> <span
+                    class="administration-nav-link-text">View Site </span> <i class="fas fa-external-link-alt"></i></a>
+        </li>
+    </ul>
+</div>

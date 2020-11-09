@@ -4,6 +4,7 @@ const router = express.Router();
 
 const Shop = require("../models/Shops");
 const Product = require("../models/Products");
+const { requireLogin } = require("../middlewares/auth");
 
 /*
 PATH     /
@@ -89,4 +90,29 @@ router.get("/product/:_id", async (req, res) => {
   }
 });
 
+router.get("/:slug/customize", requireLogin, async (req, res, next) => {
+  try {
+    const shop = await Shop.findOne({ slug: req.params.slug });
+
+    if (!shop) {
+      return console.log("Shop not found");
+    }
+    res.render("index/customize");
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.get("/:slug/add-product", requireLogin, async (req, res, next) => {
+  try {
+    const shop = await Shop.findOne({ slug: req.params.slug });
+
+    if (!shop) {
+      return console.log("Shop not found");
+    }
+    res.render("index/add_product");
+  } catch (err) {
+    console.log(err);
+  }
+});
 module.exports = router;

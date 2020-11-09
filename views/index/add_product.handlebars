@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/css/all.css">
+
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>marketSpace | {{loggedIn.slug}} - add products </title>
+</head>
+
+<body>
+    <main class="main-content">
+        <section class="main-content">
+            <section class="grid-7-5 administration-grid">
+                <div class="administration" id="content">
+                    {{> _admin_nav}}
+
+                    <div class="administration-content">
+                        {{> _alerts}}
+                        <form action="/dashboard/product" method="POST" enctype="multipart/form-data">
+                            <p class="u-divider-text">Product Details</p>
+                            <div class="u-divider--primary u-margin-bottom--small"></div>
+
+                            <input class="form__input" type="text" name="product_name" id="product-name"
+                                placeholder="Product Name" maxlength="30" required />
+                            <label for="product-name" class="form__label">Product Name</label>
+
+                            <textarea class="texts-input form__input" name="product_description"
+                                id="product-description" cols="30" rows="5" placeholder="Product Description"
+                                maxlength="500" spellcheck="false"></textarea>
+                            <label for="product-description" class="form__label" id="product-description-label"></label>
+
+
+                            <div class="grid-2">
+                                <div class="form__group">
+                                    <select class="form__input" id="product-currency" name="currency" />
+                                    <option value="" selected disabled>Currency</option>
+                                    <option value="ghs">Ghana Cedis</option>
+                                    <option value="$">US Dollars</option>
+                                    </select>
+
+                                </div>
+                                <div class="form__group">
+                                    <input class="form__input" type="number" min="0" placeholder="Price"
+                                        id="product-price" name="product_price" required />
+                                    <label class="form__label" for="product-price">Price</label>
+                                </div>
+
+
+                            </div>
+
+                            <div class="form__group">
+                                <input class="form__input" type="number" placeholder=" Number Available"
+                                    id="product-available" name="products_available" min="0" />
+                                <label class="form__label" for="product-available"> Number Available</label>
+                            </div>
+
+
+                            <div class="u-margin-bottom--medium">
+                                <p class="u-divider-text">Products Images</p>
+                                <div class="u-divider--primary u-margin-bottom--small"></div>
+
+                                <div class="images  form__group u-margin-bottom--large">
+                                    <label for="main-product-image" class="form__label u-alert">Main Product
+                                        Image</label>
+                                    <input class="images-input form__input" type="file" name="image"
+                                        id="main-product-image" required />
+
+                                </div>
+
+                                <div class="images form__group ">
+                                    <div class="images form__group edit-images  ">
+                                        <div>
+                                            <label for="sub-product-photo1">Photo 1</label>
+                                            <input class="images-input form__input" type="file" name="image"
+                                                id="sub-product-photo1" />
+                                        </div>
+                                        <div>
+                                            <label for="sub-product-photo2">Photo 2</label>
+                                            <input class="images-input form__input" type="file" name="image"
+                                                id="sub-product-photo2" />
+                                        </div>
+                                        <div>
+                                            <label for="sub-product-photo3">Photo 3</label>
+                                            <input class="images-input form__input" type="file" name="image"
+                                                id="sub-product-photo3" />
+                                        </div>
+                                        <div>
+                                            <label for="sub-product-photo4">Photo 4</label>
+                                            <input class="images-input form__input" type="file" name="image"
+                                                id="sub-product-photo4" />
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form__group">
+                                <p class="u-divider-text">Product tags</p>
+                                <div class="u-divider--primary u-margin-bottom--small"></div>
+                                <input class="form__input" type="text" name="tags" id="tags"
+                                    placeholder="Tags (eg: camera,iphone11,dress)" />
+                                <label for="tags" class="form__label">Tags (eg: camera,iphone11,dress)</label>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn--block" id="button">
+                                <i class="icon-ecommerce-bag"></i> Add Product
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div id="preview" class="administration-preview">
+                    <div class="preview-pointer pointer-left" id="pointer-left">
+                        <p>&larr;</p>
+                    </div>
+                    <header class="preview-header" id="preview-header">
+                        <p class="preview-logo" id="preview-logo">Test Shop</p>
+                        <img src="../img/feature-1.jpeg" alt="image-1" id="preview-image"
+                            class="preview-image preview-image--1" draggable="false" />
+                        <div class="preview-overlay"></div>
+                        <div class="preview-header-texts">
+                            <p class="preview-mainText" id="main-text-placeholder-1"></p>
+                            <p class="preview-subText" id="sub-text-placeholder-1"></p>
+                        </div>
+                    </header>
+                    <div class="preview-about" id="preview-about">
+                        <div class="card">
+                            <div class="grid-2">
+                                <div class="preview-about-text">
+                                    <h2 class="preview-heading">About Us.</h2>
+                                    <p id="preview-about-placeholder"></p>
+                                    <a href="" class="preview-btn">Read More</a>
+                                </div>
+                                <div class="preview-image">
+                                    <img src="../img/hero.jpeg" alt="" id="about-preview-image" draggable="false" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="preview-product" id="preview-product">
+                        <div class="">
+                            <div class="preview-product-card card">
+                                <div class="">
+                                    <img src="../img/nat-8.jpg" alt="" class="preview-product-image"
+                                        draggable="false" />
+                                </div>
+                                <h3 id="preview-product-name" class="preview-product-name"></h3>
+                                <div>
+                                    <p class="preview-product-description" id="preview-product-description"></p>
+                                </div>
+                                <div class="u-space-between preview-product-price">
+                                    <a href="" class="preview-product-btn">View More</a>
+                                    <div class="">
+                                        <span id="preview-product-currency"></span><span
+                                            id="preview-product-price"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <script src="../js/add_product.js"></script>
+
+
+</body>
+
+</html>
