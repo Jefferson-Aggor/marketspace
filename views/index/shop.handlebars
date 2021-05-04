@@ -4,8 +4,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link rel="stylesheet" href="/css/ecommerce.css" />
+    <meta property="og:title" content="Get your {{shop.category}} at {{shop.name}}" />
+    <meta property="og:description" content="{{formatLongText shop.about}}" />
+    <meta property="og:url" content="http://marketspacetrial.herokuapp.com/store/{{shop.slug}}" />
+    <meta property="og:image" content="{{shop.mainPhoto}}" />
+    <link rel="stylesheet" href="/css/all.css">
     <link rel="stylesheet" href="/css/splide.min.css" />
     <link rel="stylesheet" href="/css/style.css" />
     <title>{{shop.name}} | Home</title>

@@ -1,12 +1,26 @@
 <footer class="footer">
     <div class="footer-logo">
         <h2>{{#if loggedIn}} {{loggedIn.name}} {{else}} {{shop.name}}{{/if}}</h2>
-        <p>{{#if loggedIn}} {{loggedIn.mainText_sub_1}} {{else}} {{shop.mainText_sub_1}} {{/if}}</p>
+        <p>{{#if loggedIn}} {{loggedIn.mainText_1}} {{else}} {{shop.mainText_1}} {{/if}}</p>
     </div>
     <div class="footer-icons">
-        <p><a {{#if loggedIn}} href="{{loggedIn.facebook}}" {{else}} href="{{shop.facebook}}" {{/if}}>Facebook</a></p>
-        <p><a {{#if loggedIn}} href="{{loggedIn.twitter}}" {{else}} href="{{shop.twitter}}" {{/if}}>Twitter</a></p>
-        <p><a {{#if loggedIn}} href="{{loggedIn.instagram}}" {{else}} href="{{shop.instagram}}" {{/if}}>Instagram</a>
-        </p>
+        <div class="social-media">
+            <h3 class="u-heading--tertiary">Social Media </h3>
+            <p><a {{#if loggedIn}} href="{{loggedIn.facebook}}" {{else}} href="{{shop.facebook}}" {{/if}}>Facebook</a>
+            </p>
+            <p><a {{#if loggedIn}} href="{{loggedIn.twitter}}" {{else}} href="{{shop.twitter}}" {{/if}}>Twitter</a></p>
+            <p><a {{#if loggedIn}} href="{{loggedIn.instagram}}" {{else}} href="{{shop.instagram}}"
+                    {{/if}}>Instagram</a>
+            </p>
+            <p><a href="tel:+{{shop.phone}}">{{shop.phone}} </a></p>
+        </div>
+        <div class="shares">
+            <h3 class="u-heading--tertiary">Shares <i class="fas fa-share-alt"></i></h3>
+            <p>
+                <a href="whatsapp://send?text=Hey,check out my new customised shopping site!"
+                    data-action="share/whatsapp/share"><i class="fab fa-whatsapp"></i></a>
+            </p>
+
+        </div>
     </div>
 </footer>

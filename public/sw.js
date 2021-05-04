@@ -48,7 +48,6 @@ self.addEventListener("fetch", (e) => {
     caches
       .match(e.request)
       .then((cacheResponse) => {
-        console.log(cacheResponse);
         return (
           cacheResponse ||
           fetch(e.request).then(async (fetchRes) => {

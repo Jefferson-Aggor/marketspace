@@ -749,13 +749,28 @@ th {
 }
 .footer-icons {
   padding: 4rem;
-  display: flex;
-  justify-content: space-evenly;
-  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
   background-color: rgba(0, 5, 0, 0.5);
+}
+.footer-icons .social-media h3 {
+  letter-spacing: 0.1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 0.5px solid #777;
 }
 .footer-icons a {
   color: #fff;
+  padding: 1rem 0;
+}
+
+.footer-icons .shares {
+  text-align: end;
+}
+.footer-icons .shares h3 {
+  letter-spacing: 0.1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 0.5px solid #555;
 }
 
 .index-main {
