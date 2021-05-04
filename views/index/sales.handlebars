@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <link rel="stylesheet" href="/css/all.css">
     <link rel="stylesheet" href="/css/ecommerce.css" />
     <link rel="stylesheet" href="/css/lightbox.min.css">
     <title>{{loggedIn.slug}} | Sales</title>
@@ -15,15 +15,7 @@
         {{> _navbar}}
         <section class="main-content sales-content">
 
-            <div class="u-space-between shops__nav">
-                <div class="shops__logo"> <a href="/store/{{loggedIn.slug}}" style="color: #fff;">{{loggedIn.name}}</a>
-                </div>
-                <ul class="u-flex h-menu">
 
-                    <li class="h-menu-item"><a href="/dashboard/{{loggedIn._id}}/sales">Sales</a></li>
-                    <li class="h-menu-item"><a href="/dashboard">Your dashboard</a></li>
-                </ul>
-            </div>
 
 
             <div class="sale-content">
@@ -39,12 +31,12 @@
 
                     <table>
                         <thead>
-                            <th>Name</th>
-                            <th>Product</th>
-                            <th>Location</th>
-                            <th>Phone</th>
-                            <th>Status</th>
-                            <th>Date</th>
+                            <th><i class="fas fa-user"></i></th>
+                            <th><i class="fab fa-opencart"></i></th>
+                            <th><i class="fas fa-map-marker-alt"></i></th>
+                            <th><i class="fas fa-mobile-alt"></i></th>
+                            <th><i class="fab fa-first-order"></i></th>
+                            <th><i class="fas fa-clock"></i></th>
                         </thead>
 
                         {{#each product}}
@@ -54,12 +46,13 @@
                             <td>{{product_name}}</td>
 
                             <td>{{location}}</td>
-                            <td><a href="tel:{{phone}}">{{phone}}</a></td>
+                            <td><a href="tel:{{phone}}">View</a></td>
                             <td>
                                 {{#if new}}
-                                <a href="/payment/{{_id}}/formatorder?_method=PUT" class="u-alert">new</a>
+                                <a href="/payment/{{_id}}/formatorder?_method=PUT" class="u-alert"><i
+                                        class="fas fa-circle fa-3x" style="color: orangered;"></i></a>
                                 {{else}}
-                                processed
+                                <i class="fas fa-check" style="color: rgb(98, 255, 98);"></i>
                                 {{/if}}
                             </td>
                             <td>{{formatDate orderedAt}}</td>
@@ -81,26 +74,28 @@
                     {{#if product}}
                     <table>
                         <thead>
-                            <th>Name</th>
-                            <th>Main Image</th>
-                            <th>Price</th>
-                            <th>Date</th>
-                            <th>Changes</th>
+                            <th><i class="fab fa-opencart"></i></th>
+                            <th><i class="fas fa-camera-retro"></i></th>
+                            <th><i class="fas fa-tags"></i></th>
+                            <th><i class="fas fa-clock"></i></th>
+                            <th><i class="far fa-edit"></i></th>
                         </thead>
 
                         {{#each product}}
 
                         <tbody>
 
-                            <td><strong>{{name}}</strong></td>
+                            <td data-product-id="{{_id}}" class="product-name"><strong>{{name}}</strong></td>
                             <td>
-                                <a href="{{mainPhoto}}" data-lightbox="{{_id}}">View Image</a>
+                                <a href="{{mainPhoto}}" data-lightbox="{{_id}}">View</a>
                             </td>
-                            <td>{{currency}} <strong>{{formatNum price}}</strong> </td>
+                            <td><strong>{{formatNum price}}</strong> </td>
                             <td>{{formatDate addedAt}}</td>
                             <td>
-                                <a href="/dashboard/edit/{{_id}}/">E</a> |
-                                <a href="/dashboard/delete/{{_id}}?_method=DELETE">D</a>
+                                <a href="/dashboard/edit/{{_id}}/" style="color: rgb(62, 62, 224);"><i
+                                        class="fas fa-pencil-alt"></i></a> |
+                                <a href="/dashboard/delete/{{_id}}?_method=DELETE" style="color: orangered;"
+                                    class="delete-product" data-delete-id="{{_id}}"><i class="fas fa-trash-alt"></i></a>
                             </td>
 
                         </tbody>
@@ -140,26 +135,6 @@
                                 SHOP</a>
                         </div>
                     </div>
-
-                    {{!-- {{#each product}}
-                    <div class="popup" id="deletePopup">
-                        <div class="popup-content" id="popup-content">
-                            <h2 class=" u-margin-bottom--medium">Sure about this?</h2>
-                            <div>
-
-                                <p class="alert-warning u-margin-bottom--medium" style="padding:2rem 1rem">
-                                    You are about to delete <strong>{{name}}</strong>.
-                                    This action is irreversible</p>
-                            </div>
-
-                            <a href="/dashboard/delete/{{_id}}?_method=DELETE" class='u-alert'>Delete
-                                Product</a>
-                        </div>
-                    </div>
-                    {{/each}} --}}
-
-
-
                 </div>
             </div>
             <div style="height: 25vh"></div>
@@ -173,6 +148,7 @@
         const popup_content = document.querySelectorAll(".popup-content");
         const popup = document.querySelector("#popup");
         const deletePopup = document.querySelector("#deletePopup");
+        const delete_product = document.querySelectorAll('.delete-product');
 
         const show = function (handler, ID, placeholder) {
             handler.addEventListener("click", (e) => {
@@ -205,10 +181,11 @@
             show(showModal, popup, content);
 
             hide(popup, popup, content);
-
-
-
         });
+
+        delete_product.forEach(icon => {
+            show(icon, popup, popup_content)
+        })
 
 
     </script>

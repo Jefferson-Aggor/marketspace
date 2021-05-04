@@ -59,9 +59,9 @@
                     <div class="grid-3 grid-to-2">
 
                         {{#each shops}}
-
+                        {{#if mainPhoto}}
                         <div class="card shop__card shop">
-                            <img src="{{mainPhoto}}" class="shop__image" alt="shop-1" />
+                            <img src="{{mainPhoto}}" class="shop__image" alt="{{slug}}" />
 
                             <h2 class="shop__name">
                                 {{name}}
@@ -80,6 +80,8 @@
                                 <a href="/store/{{slug}}" class="btn btn-block btn-primary shop__link">Visit Store</a>
                             </div>
                         </div>
+
+                        {{/if}}
 
                         {{/each}}
                     </div>

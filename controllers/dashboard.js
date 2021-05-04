@@ -64,7 +64,7 @@ const addProduct = async (req, res, next) => {
           res.redirect(`/${req.user.slug}/add-product`);
         })
         .catch((err) => {
-          console.log(err);
+          console.log(err.message);
           req.flash("error_msg", "Failed to add product");
           res.redirect(`/${req.user.slug}/add-product`);
         });
@@ -178,12 +178,11 @@ const updateBasicInfo = async (req, res, next) => {
       twitter,
       instagram,
     } = req.body;
-    const shop = await Shop.findById(req.params._id);
+    const shop = await Shop.findById(req.user._id);
 
     if (!shop) {
       return console.log("Shop not found");
     }
-
     shop.name = name;
     shop.email = email;
     shop.phone = phone;
@@ -194,6 +193,7 @@ const updateBasicInfo = async (req, res, next) => {
     shop.instagram = instagram;
 
     shop.save();
+
     req.flash("success_msg", "Shop info updated.");
     res.redirect("/dashboard");
   } catch (err) {

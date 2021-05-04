@@ -1,0 +1,9 @@
+{
+  "name": "marketspace",
+  "short_name": "marketSpace",
+  "start_url": "/views/index/index.handlebars",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "orientation": "portrait",
+  "theme_color": "#4b1d3fff"
+}

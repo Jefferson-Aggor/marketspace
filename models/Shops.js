@@ -38,7 +38,6 @@ const shopSchema = new Schema(
     },
     mainPhoto: {
       type: String,
-      default: "./img/no-photo.png",
     },
     photo_1: {
       type: String,

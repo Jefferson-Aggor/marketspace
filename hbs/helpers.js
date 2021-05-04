@@ -2,7 +2,7 @@ const moment = require("moment");
 const humanize = require("humanize");
 
 const formatDate = (date) => {
-  return moment(date).format("DD / MM / YY");
+  return moment(date).format("DD-MM");
 };
 
 const formatText = (str) => {
