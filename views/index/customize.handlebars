@@ -5,7 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="/css/all.css">
+    <link rel="stylesheet" href="../css/all.css">
+    <link rel="stylesheet" href="../css/lightbox.min.css" />
     <link rel="stylesheet" href="../css/style.css" />
     <title>marketSpace | Customize - {{loggedIn.slug}}</title>
 </head>
@@ -23,18 +24,44 @@
                             <p class="u-divider-text">Slider Images</p>
                             <div class="u-divider--primary u-margin-bottom--small"></div>
                             <div class="images main-image form__group">
-                                <label for="main-image" class="form__label">Main Image</label>
+                                <label for="main-image" class="form__label ">
+
+                                    Main Image
+
+                                </label>
                                 <input class="images-input form__input" type="file" name="image" id="main-image" />
+
+                                {{#if loggedIn.mainPhoto}}
+                                <a href="{{loggedIn.mainPhoto}}" data-lightbox="{{loggedIn.mainPhoto}}">
+                                    View Main Image
+                                </a>
+
+                                {{else}}
+                                {{/if}}
                             </div>
 
                             <div class="images primary-image form__group">
                                 <label for="primary-image" class="form__label">Primary Image</label>
                                 <input class="images-input form__input" type="file" name="image" id="primary-image" />
+                                {{#if loggedIn.photo_1}}
+                                <a href="{{loggedIn.photo_1}}" data-lightbox="{{loggedIn.photo_1}}">
+                                    View Photo 1
+                                </a>
+
+                                {{else}}
+                                {{/if}}
                             </div>
 
                             <div class="images secondary-image form__group">
                                 <label for="secodary-image" class="form__label">Secondary Image</label>
                                 <input class="images-input form__input" type="file" name="image" id="secondary-image" />
+                                {{#if loggedIn.photo_2}}
+                                <a href="{{loggedIn.photo_2}}" data-lightbox="{{loggedIn.photo_2}}">
+                                    View Photo 2
+                                </a>
+
+                                {{else}}
+                                {{/if}}
                             </div>
 
                             <p class="u-divider-text">Slider Texts</p>
@@ -96,7 +123,10 @@
             </section>
         </section>
     </main>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+        integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+        crossorigin="anonymous"></script>
+    <script src="../js/lightbox-plus-jquery.js"></script>
     <script src="../js/customize.js"></script>
 </body>
 

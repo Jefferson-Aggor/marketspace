@@ -385,6 +385,7 @@ p {
   margin-left: 2rem;
   margin-top: 0.7rem;
   display: block;
+  align-items: center;
   transition: all 0.3s;
 }
 .form__input:placeholder-shown + .form__label {
@@ -1871,4 +1872,12 @@ th {
   .reset-heading {
     font-size: 3rem !important;
   }
+}
+
+.bg-grey {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  background-color: #ececec;
+  border-radius: 0.5rem;
 }
