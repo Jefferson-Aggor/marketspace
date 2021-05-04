@@ -4,9 +4,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/all.css">
     <link rel="stylesheet" href="../css/icon-font.css" />
-    <link rel="stylesheet" href="../css/ecommerce.css" />
-    <link rel="stylesheet" href="../css/splide.min.css" />
     <link rel="stylesheet" href="../css/lightbox.min.css" />
     <link rel="stylesheet" href="../css/style.css" />
     <title>{{product.owner.name}} | {{product.name}} </title>
@@ -16,9 +15,7 @@
     <main class="index-main">
         {{> _navbar}}
         <section class="main-content">
-            <div class="u-space-between shops__nav">
-                <div class="shops__logo">{{product.owner.name}}</div>
-            </div>
+
             <section class="product-section">
                 {{> _alerts}}
                 <div class="grid-3 product-grid-3">
@@ -163,13 +160,30 @@
             <div style="height: 10vh;"></div>
             <footer class="footer">
                 <div class="footer-logo">
-                    <h2>{{product.owner.name}}</h2>
-                    <p>{{product.owner.mainText_sub_1}}</p>
+                    <h2>{{#if loggedIn}} {{loggedIn.name}} {{else}} {{product.owner.name}}{{/if}}</h2>
+                    <p>{{#if loggedIn}} {{loggedIn.mainText_1}} {{else}} {{product.owner.mainText_1}} {{/if}}</p>
                 </div>
                 <div class="footer-icons">
-                    <p><a href="#">Facebook</a></p>
-                    <p><a href="#">Twitter</a></p>
-                    <p><a href="#">Instagram</a></p>
+                    <div class="social-media">
+                        <h3 class="u-heading--tertiary">Social Media </h3>
+                        <p><a {{#if loggedIn}} href="{{loggedIn.facebook}}" {{else}} href="{{product.owner.facebook}}"
+                                {{/if}}>Facebook</a>
+                        </p>
+                        <p><a {{#if loggedIn}} href="{{loggedIn.twitter}}" {{else}} href="{{product.owner.twitter}}"
+                                {{/if}}>Twitter</a></p>
+                        <p><a {{#if loggedIn}} href="{{loggedIn.instagram}}" {{else}} href="{{product.owner.instagram}}"
+                                {{/if}}>Instagram</a>
+                        </p>
+                        <p><a href="tel:{{product.owner.phone}}">Contact </a></p>
+                    </div>
+                    <div class="shares">
+                        <h3 class="u-heading--tertiary">Shares <i class="fas fa-share-alt"></i></h3>
+                        <p>
+                            <a href="whatsapp://send?text=Hey,customized my shopping website on MARKETSPACE. Check it out http://marketspacetrial.herokuapp.com/store/{{product.owner.slug}}!"
+                                data-action="share/whatsapp/share"><i class="fab fa-whatsapp"></i></a>
+                        </p>
+
+                    </div>
                 </div>
             </footer>
         </section>
