@@ -26,7 +26,7 @@ To run the application locally:
 
 1. Clone the repository:
 ```git
-git clone https://github.com/Jefferson-Aggor/campus-connect-v2.git
+git clone https://github.com/Jefferson-Aggor/marketspace.git
 ```
 2. Navigate to the project directory:
 ```
