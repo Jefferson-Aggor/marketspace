@@ -30,7 +30,7 @@ git clone https://github.com/Jefferson-Aggor/marketspace.git
 ```
 2. Navigate to the project directory:
 ```
-cd campus-connect-v2
+cd marketspace
 ```
 3. Install dependencies:
 ``npm install``
